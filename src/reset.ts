@@ -133,6 +133,21 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.2;
     color: ${props => props.theme.dark.primary};
   }
+
+  a {
+    text-decoration: none;
+  }
+  
+  button {
+    font-size: 100%;
+    cursor: pointer;
+    border: none;
+  }
+
+  svg {
+    display: block;
+    vertical-align: middle;
+  }
 `
 
 export default GlobalStyle
