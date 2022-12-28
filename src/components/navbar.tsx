@@ -11,42 +11,63 @@ const Nav = styled(motion.nav)`
   background-color: #0f0d0c;
 `
 
-const Wrapper = styled.div`
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const Wrapper = styled(Flex)`
   width: 100%;
   max-width: ${props => props.theme.size.medium};
   margin-inline: auto;
   padding: 0.5rem 2rem;
-  display: flex;
-  align-items: center;
+  gap: 0.75rem;
+`
+
+const Logo = styled.div`
+  svg {
+    width: 2rem;
+    height: 2rem;
+    transform: rotate(-20deg);
+    transition: transform 0.25s ease-in-out;
+  }
+  &:hover svg {
+    transform: none;
+  }
+
+  a {
+    padding: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.75;
+    letter-spacing: -0.025em;
+    display: flex;
+    align-items: center;
+  }
 `
 
 const Items = styled.ul`
   flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
+  &,
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: ${props => props.theme.size.small}) {
+    display: none;
+  }
 `
 
 const Item = styled.li`
   position: relative;
-  &:first-child a {
-    font-weight: 600;
-
-    &:hover > svg {
-      transform: none;
-    }
-  }
-
   a {
+    gap: 0.25rem;
     font-weight: 400;
     padding: 0.5rem;
     padding-bottom: 0.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: inherit;
     transition: color 0.25s ease-in-out;
-
     &:hover {
       color: ${props => props.theme.dark.accent};
     }
@@ -64,21 +85,12 @@ const Underline = styled(motion.div)`
   background-color: ${props => props.theme.btn.normal};
 `
 
-const Logo = styled.svg`
-  width: 2rem;
-  height: 2rem;
-  transform: rotate(-20deg);
-  transition: transform 0.25s ease-in-out;
-`
-
-const ButtonWrapper = styled.div<{ isDark: boolean }>`
+const ButtonWrapper = styled(Flex)<{ isDark: boolean }>`
   display: flex;
   align-items: center;
   padding: 1px;
-  background-color: ${props =>
-    props.isDark ? 'rgb(82, 82, 91, 1)' : '#805AD5'};
+  background-color: ${props => (props.isDark ? 'rgb(82 82 91)' : '#805AD5')};
   border-radius: 1.5rem;
-
   &,
   & > button {
     transition: all 0.1s linear;
@@ -92,65 +104,132 @@ const Button = styled.button<{ isDark?: boolean }>`
   border-radius: 1.5rem;
 `
 
+const Dropdown = styled(motion.div)`
+  position: relative;
+  button {
+    display: none;
+    padding: 0.5rem;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    border: 1px solid #fff2;
+    transition: background-color 0.25s ease-in-out;
+    &:hover {
+      background-color: rgb(82 82 91 / 0.5);
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    @media screen and (max-width: ${props => props.theme.size.small}) {
+      display: block;
+    }
+  }
+`
+
+const Menu = styled(motion.div)`
+  width: 14rem;
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background-color: rgb(39 39 42 / 1);
+  border-radius: 0.25rem;
+  border: 1px solid rgb(63 63 70 / 0.5);
+  transform-origin: right top;
+`
+
+const MenuItem = styled(motion.div)`
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: rgb(82 82 91 / 0.5);
+  }
+`
+
+const menuVaraints = {
+  expanded: {
+    opacity: 1,
+    scale: 1,
+    display: 'block'
+  },
+  collapsed: {
+    opacity: 0,
+    scale: 0.9,
+    transitionEnd: {
+      display: 'none'
+    }
+  }
+}
+
 const Navbar: React.FC = () => {
-  const [isDark, setIsDark] = useState(true)
   const { pathname } = useLocation()
-  const bg = isDark ? '0, 0, 0' : '255, 255, 255'
   const { scrollY } = useScroll()
+  const [isDark, setIsDark] = useState(true)
+  const [openDropdown, setOpenDropdown] = useState(false)
+  const bg = isDark ? '0, 0, 0' : '255, 255, 255'
   const backgroundColor = useTransform(
     scrollY,
     [0, 80],
-    [`rgba(${bg}, 0)`, `rgba(${bg}, 0.5)`]
+    [`rgba(${bg} / 0)`, `rgb(${bg} / 0.5)`]
   )
 
   const toggleTheme = () => {
     setIsDark(prev => !prev)
   }
 
+  const toggleDropdown = () => {
+    setOpenDropdown(prev => !prev)
+  }
+
   return (
     <Nav style={{ backgroundColor }}>
       <Wrapper>
-        <Items>
-          <Item>
-            <Link to="/">
-              <Logo
-                xmlns="http://www.w3.org/2000/svg"
-                version="1.0"
-                width="360.000000pt"
-                height="360.000000pt"
-                viewBox="0 0 360.000000 360.000000"
-                preserveAspectRatio="xMidYMid meet"
+        <Logo>
+          <Link to="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.0"
+              width="360.000000pt"
+              height="360.000000pt"
+              viewBox="0 0 360.000000 360.000000"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g
+                transform="translate(0.000000,360.000000) scale(0.100000,-0.100000)"
+                fill="currentColor"
+                stroke="none"
               >
-                <g
-                  transform="translate(0.000000,360.000000) scale(0.100000,-0.100000)"
-                  fill="currentColor"
-                  stroke="none"
-                >
-                  <path d="M1365 2920 c-36 -14 -92 -86 -111 -141 -50 -145 -1 -375 104 -491 89 -99 193 -101 265 -6 56 74 76 226 47 350 -48 200 -190 335 -305 288z" />
-                  <path d="M2205 2915 c-49 -26 -74 -55 -109 -126 -79 -157 -71 -360 18 -495 130 -195 340 -59 363 236 15 199 -78 384 -199 397 -28 2 -53 -2 -73 -12z" />
-                  <path d="M660 2453 c-159 -83 -132 -411 50 -600 112 -117 231 -113 294 10 102 199 -64 571 -269 602 -28 4 -50 1 -75 -12z" />
-                  <path d="M2919 2416 c-162 -58 -309 -280 -309 -466 1 -156 112 -230 247 -165 122 60 238 218 269 367 19 91 11 153 -26 212 -40 62 -103 80 -181 52z" />
-                  <path d="M1750 1964 c-151 -42 -326 -149 -451 -273 -195 -195 -311 -450 -280 -617 28 -148 106 -257 226 -315 100 -48 158 -40 379 58 174 77 185 77 337 20 53 -20 125 -41 160 -46 199 -32 406 91 478 285 86 227 10 459 -221 680 -152 146 -298 214 -473 220 -69 2 -117 -1 -155 -12z" />
-                </g>
-              </Logo>
-              <span>Hotaroo</span>
-            </Link>
-          </Item>
+                <path d="M1365 2920 c-36 -14 -92 -86 -111 -141 -50 -145 -1 -375 104 -491 89 -99 193 -101 265 -6 56 74 76 226 47 350 -48 200 -190 335 -305 288z" />
+                <path d="M2205 2915 c-49 -26 -74 -55 -109 -126 -79 -157 -71 -360 18 -495 130 -195 340 -59 363 236 15 199 -78 384 -199 397 -28 2 -53 -2 -73 -12z" />
+                <path d="M660 2453 c-159 -83 -132 -411 50 -600 112 -117 231 -113 294 10 102 199 -64 571 -269 602 -28 4 -50 1 -75 -12z" />
+                <path d="M2919 2416 c-162 -58 -309 -280 -309 -466 1 -156 112 -230 247 -165 122 60 238 218 269 367 19 91 11 153 -26 212 -40 62 -103 80 -181 52z" />
+                <path d="M1750 1964 c-151 -42 -326 -149 -451 -273 -195 -195 -311 -450 -280 -617 28 -148 106 -257 226 -315 100 -48 158 -40 379 58 174 77 185 77 337 20 53 -20 125 -41 160 -46 199 -32 406 91 478 285 86 227 10 459 -221 680 -152 146 -298 214 -473 220 -69 2 -117 -1 -155 -12z" />
+              </g>
+            </svg>
+            <span>Hotaroo</span>
+          </Link>
+        </Logo>
 
+        <Items>
           <Item>
             <Link to="/works">
               Works{' '}
               {pathname === '/works' && <Underline layoutId="underline" />}
             </Link>
           </Item>
-
           <Item>
             <Link to="/posts">
               Posts{' '}
               {pathname === '/posts' && <Underline layoutId="underline" />}
             </Link>
           </Item>
-
           <Item>
             <a
               href="https://github.com/Rolo-coding/hotaroo-homepage"
@@ -172,6 +251,8 @@ const Navbar: React.FC = () => {
             </a>
           </Item>
         </Items>
+
+        <div style={{ flex: 1 }}></div>
 
         <ButtonWrapper onClick={toggleTheme} isDark={isDark}>
           <Button isDark={!isDark}>
@@ -202,6 +283,54 @@ const Navbar: React.FC = () => {
             </svg>
           </Button>
         </ButtonWrapper>
+
+        <Dropdown>
+          <button onClick={toggleDropdown}>
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 512 512"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="none"
+                strokeLinecap="round"
+                strokeMiterlimit="10"
+                strokeWidth="48"
+                d="M88 152h336M88 256h336M88 360h336"
+              ></path>
+            </svg>
+          </button>
+
+          <Menu
+            variants={menuVaraints}
+            initial={false}
+            animate={openDropdown ? 'expanded' : 'collapsed'}
+            transition={{ type: 'tween', duration: 0.15 }}
+          >
+            <MenuItem>
+              <Link to="/">
+                <span>About</span>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/">
+                <span>Works</span>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/">Posts</Link>
+            </MenuItem>
+            <MenuItem>
+              <a href="https://github.com/Rolo-coding/hotaroo-homepage">
+                Source
+              </a>
+            </MenuItem>
+          </Menu>
+        </Dropdown>
       </Wrapper>
     </Nav>
   )

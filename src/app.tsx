@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
 import Navbar from './components/navbar'
 import Home from './components/home'
@@ -16,11 +17,13 @@ const App: React.FC = () => {
   return (
     <Main>
       <Navbar />
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/works" element={<Works />} />
-        <Route path="/posts" element={<Posts />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/works" element={<Works />} />
+          <Route path="/posts" element={<Posts />} />
+        </Routes>
+      </AnimatePresence>
     </Main>
   )
 }

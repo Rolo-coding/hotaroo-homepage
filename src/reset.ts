@@ -135,11 +135,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    color: inherit;
     text-decoration: none;
   }
   
   button {
     font-size: 100%;
+    color: inherit;
     cursor: pointer;
     border: none;
   }
