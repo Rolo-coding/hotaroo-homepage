@@ -8,6 +8,7 @@ import Works from './components/works'
 import Posts from './components/posts'
 
 const Main = styled.main`
+  height: 150vh;
   padding-bottom: 2rem;
 `
 

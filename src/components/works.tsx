@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, containerVariants } from './home'
+import { Breakline, Container, containerVariants, Title } from './home'
 
 const Works: React.FC = () => {
   return (
@@ -8,9 +8,10 @@ const Works: React.FC = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      transition={{ type: 'spring', stiffness: 70, duration: 0.4 }}
+      transition={{ type: 'tween', duration: 0.4 }}
     >
-      Works
+      <Title>Works</Title>
+      <Breakline />
     </Container>
   )
 }

@@ -4,8 +4,26 @@ import styled from 'styled-components'
 
 export const Container = styled(motion.section)`
   width: 100%;
-  max-width: ${props => props.theme.size.medium};
-  height: 150vh;
+  max-width: ${props => props.theme.size.large};
+  margin-top: 8rem;
+  margin-inline: auto;
+  padding-inline: 8rem;
+`
+
+export const Title = styled.h2`
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+`
+
+export const Breakline = styled.hr`
+  width: 100%;
+  opacity: 0.5;
+  border: 0;
+  border-color: #fff3;
+  border-style: solid;
+  border-bottom-width: 1px;
+  margin: 1.5rem 0;
 `
 
 export const containerVariants = {
@@ -30,9 +48,10 @@ const Home: React.FC = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      transition={{ type: 'spring', stiffness: 70, duration: 0.4 }}
+      transition={{ type: 'tween', duration: 0.4 }}
     >
-      Home
+      <Title>Home</Title>
+      <Breakline />
     </Container>
   )
 }

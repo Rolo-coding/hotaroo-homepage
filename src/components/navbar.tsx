@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import styled from 'styled-components'
 
 const Nav = styled(motion.nav)`
+  z-index: 2;
   width: 100%;
   position: sticky;
   top: 0;
@@ -18,7 +19,7 @@ const Flex = styled.div`
 
 const Wrapper = styled(Flex)`
   width: 100%;
-  max-width: ${props => props.theme.size.medium};
+  max-width: ${props => props.theme.size.large};
   margin-inline: auto;
   padding: 0.5rem 2rem;
   gap: 0.75rem;
@@ -55,7 +56,7 @@ const Items = styled.ul`
     align-items: center;
   }
 
-  @media screen and (max-width: ${props => props.theme.size.small}) {
+  @media screen and (max-width: ${props => props.theme.size.medium}) {
     display: none;
   }
 `
@@ -122,7 +123,7 @@ const Dropdown = styled(motion.div)`
       height: 1.25rem;
     }
 
-    @media screen and (max-width: ${props => props.theme.size.small}) {
+    @media screen and (max-width: ${props => props.theme.size.medium}) {
       display: block;
     }
   }

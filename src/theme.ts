@@ -14,8 +14,9 @@ export const theme: DefaultTheme = {
     accent: '#fff'
   },
   size: {
-    small: '768px',
-    medium: '1024px'
+    small: '480px',
+    medium: '768px',
+    large: '1024px'
   },
   btn: {
     normal: '#4FD1C5',

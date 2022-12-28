@@ -17,6 +17,7 @@ declare module 'styled-components' {
     size: {
       small: string
       medium: string
+      large: string
     }
     btn: {
       normal: string
