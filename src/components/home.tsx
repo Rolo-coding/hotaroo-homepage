@@ -10,9 +10,16 @@ export const Container = styled(motion.section)`
   padding-inline: 2rem;
 `
 
-export const Title = styled.h2`
+export const Underline = styled.span`
+  text-decoration-line: underline;
+  text-decoration-color: #3f3f46;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 0.25rem;
+`
+
+export const Title = styled.h3`
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1rem;
 `
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
@@ -13,11 +13,16 @@ const Main = styled.main`
 `
 
 const App: React.FC = () => {
+  const [isDark, setIsDark] = useState(true)
   const location = useLocation()
+
+  const toggleTheme = () => {
+    setIsDark(prev => !prev)
+  }
 
   return (
     <Main>
-      <Navbar />
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
