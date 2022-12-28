@@ -21,7 +21,7 @@ const Wrapper = styled(Flex)`
   width: 100%;
   max-width: ${props => props.theme.size.large};
   margin-inline: auto;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 0.625rem;
   gap: 0.75rem;
 `
 
@@ -92,6 +92,7 @@ const ButtonWrapper = styled(Flex)<{ isDark: boolean }>`
   padding: 1px;
   background-color: ${props => (props.isDark ? 'rgb(82 82 91)' : '#805AD5')};
   border-radius: 1.5rem;
+  cursor: pointer;
   &,
   & > button {
     transition: all 0.1s linear;

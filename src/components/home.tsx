@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 export const Container = styled(motion.section)`
   width: 100%;
-  max-width: ${props => props.theme.size.large};
+  max-width: 80ch;
   margin-top: 8rem;
   margin-inline: auto;
-  padding-inline: 8rem;
+  padding-inline: 2rem;
 `
 
 export const Title = styled.h2`
