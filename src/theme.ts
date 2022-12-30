@@ -1,25 +1,17 @@
 import type { DefaultTheme } from 'styled-components'
 
-export const theme: DefaultTheme = {
-  light: {
-    bg: '#f8f4ed',
-    navbar: '#fff8',
-    primary: '#121212',
-    accent: '#525252'
-  },
-  dark: {
-    bg: '#202023',
-    navbar: '#20202380',
-    primary: '#e5e5e5',
-    accent: '#fff'
-  },
-  size: {
-    small: '480px',
-    medium: '768px',
-    large: '1024px'
-  },
-  btn: {
-    normal: '#4FD1C5',
-    hover: '#38B2Ac'
-  }
+export const darkTheme: DefaultTheme = {
+  bgColor: '#202023',
+  borderColor: '#fff3',
+  textBg: '#3f3f46',
+  primary: '#e5e5e5',
+  accent: '#fff'
+}
+
+export const lightTheme: DefaultTheme = {
+  bgColor: '#f8f4ed',
+  borderColor: '',
+  textBg: '#fffa',
+  primary: '#202020',
+  accent: '#000'
 }

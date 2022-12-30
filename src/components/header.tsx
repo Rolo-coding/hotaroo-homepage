@@ -1,40 +1,35 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Catpaw, Github, Sun, Moon, Hamburger } from './svg'
 
-const Nav = styled(motion.nav)`
+const Container = styled(motion.header)`
   z-index: 2;
   width: 100%;
   position: sticky;
   top: 0;
   backdrop-filter: blur(10px);
-  background-color: #0f0d0c;
 `
 
-const Flex = styled.div`
+const flex = css`
   display: flex;
   align-items: center;
 `
 
-const Wrapper = styled(Flex)`
+const Wrapper = styled.div`
   width: 100%;
-  max-width: ${props => props.theme.size.large};
+  max-width: 64rem;
   margin-inline: auto;
   padding: 0.5rem 0.625rem;
   gap: 0.75rem;
+  ${flex}
 `
 
-const Logo = styled.div`
+const Logo = styled(motion.div)`
   svg {
     width: 2rem;
     height: 2rem;
-    transform: rotate(-20deg);
-    transition: transform 0.25s ease-in-out;
-  }
-  &:hover svg {
-    transform: none;
   }
 
   a {
@@ -43,22 +38,21 @@ const Logo = styled.div`
     font-weight: 600;
     line-height: 1.75;
     letter-spacing: -0.025em;
-    display: flex;
-    align-items: center;
+    ${flex}
   }
 `
 
 const Tabs = styled.ul`
   flex: 1;
+  display: none;
   gap: 1.5rem;
-  &,
+  align-items: center;
   a {
-    display: flex;
-    align-items: center;
+    ${flex}
   }
 
-  @media screen and (max-width: ${props => props.theme.size.medium}) {
-    display: none;
+  @media screen and (min-width: 40rem) {
+    display: flex;
   }
 `
 
@@ -69,9 +63,8 @@ const Tab = styled.li`
     font-weight: 400;
     padding: 0.5rem;
     padding-bottom: 0.25rem;
-    transition: color 0.25s ease-in-out;
     &:hover {
-      color: ${props => props.theme.dark.accent};
+      color: ${props => props.theme.accent};
     }
   }
 `
@@ -84,23 +77,22 @@ const Underline = styled(motion.div)`
   bottom: 0;
   height: 2px;
   margin-inline: auto;
-  background-color: ${props => props.theme.btn.normal};
+  background-color: #38b2ac;
 `
 
-const ButtonWrapper = styled(Flex)<{ isDark: boolean }>`
-  display: flex;
-  align-items: center;
+const BtnWrapper = styled.div<{ isDark: boolean }>`
   padding: 1px;
-  background-color: ${props => (props.isDark ? 'rgb(82 82 91)' : '#805AD5')};
+  background-color: ${props => (props.isDark ? 'rgb(82 82 91)' : '#805ad5')};
   border-radius: 1.5rem;
   cursor: pointer;
   &,
   & > button {
-    transition: all 0.1s linear;
+    transition: all 0.15s ease-in-out;
   }
+  ${flex}
 `
 
-const Button = styled.button<{ isDark?: boolean }>`
+const Button = styled.button<{ isDark: boolean }>`
   padding: 0.5rem;
   color: ${props => (props.isDark ? '#000' : '#fff')};
   background-color: ${props => (props.isDark ? '#fff' : 'transparent')};
@@ -110,7 +102,6 @@ const Button = styled.button<{ isDark?: boolean }>`
 const Dropdown = styled(motion.div)`
   position: relative;
   button {
-    display: none;
     padding: 0.5rem;
     background-color: transparent;
     border-radius: 0.25rem;
@@ -125,8 +116,8 @@ const Dropdown = styled(motion.div)`
       height: 1.25rem;
     }
 
-    @media screen and (max-width: ${props => props.theme.size.medium}) {
-      display: block;
+    @media screen and (min-width: 40rem) {
+      display: none;
     }
   }
 `
@@ -156,7 +147,17 @@ const Item = styled(motion.div)`
   }
 `
 
-const menuVaraints = {
+const emptyVariants = {}
+
+const logoVariants = {
+  normal: { transform: 'rotate(-30deg)' },
+  active: {
+    transform: 'rotate(0deg)',
+    transition: { type: 'tween', duration: 0.2 }
+  }
+}
+
+const menuVariants = {
   expanded: {
     opacity: 1,
     scale: 1,
@@ -177,13 +178,14 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
+  const [openDropdown, setOpenDropdown] = useState(false)
   const { pathname } = useLocation()
   const { scrollY } = useScroll()
-  const [openDropdown, setOpenDropdown] = useState(false)
+  const bg = isDark ? '0 0 0' : '255 255 255'
   const backgroundColor = useTransform(
     scrollY,
-    [0, 80],
-    [`rgba(0 0 0 / 0)`, `rgb(0 0 0 / 0.5)`]
+    [0, 60],
+    [`rgb(${bg} / 0)`, `rgb(${bg} / 0.67)`]
   )
 
   const toggleDropdown = () => {
@@ -191,50 +193,52 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
   }
 
   return (
-    <Nav style={{ backgroundColor }}>
+    <Container style={{ backgroundColor }}>
       <Wrapper>
-        <Logo>
+        <Logo variants={emptyVariants} initial="normal" whileHover="active">
           <Link to="/">
-            <Catpaw />
+            <Catpaw variants={logoVariants} />
             <span>Hotaroo</span>
           </Link>
         </Logo>
 
-        <Tabs>
-          <Tab>
-            <Link to="/works">
-              Works{' '}
-              {pathname === '/works' && <Underline layoutId="underline" />}
-            </Link>
-          </Tab>
-          <Tab>
-            <Link to="/posts">
-              Posts{' '}
-              {pathname === '/posts' && <Underline layoutId="underline" />}
-            </Link>
-          </Tab>
-          <Tab>
-            <a
-              href="https://github.com/Rolo-coding/hotaroo-homepage"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github />
-              <span>Source</span>
-            </a>
-          </Tab>
-        </Tabs>
+        <nav>
+          <Tabs>
+            <Tab>
+              <Link to="/works">
+                Works{' '}
+                {pathname === '/works' && <Underline layoutId="underline" />}
+              </Link>
+            </Tab>
+            <Tab>
+              <Link to="/posts">
+                Posts{' '}
+                {pathname === '/posts' && <Underline layoutId="underline" />}
+              </Link>
+            </Tab>
+            <Tab>
+              <a
+                href="https://github.com/hotaroo-dev/hotaroo-homepage"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github />
+                <span>Source</span>
+              </a>
+            </Tab>
+          </Tabs>
+        </nav>
 
         <div style={{ flex: 1 }}></div>
 
-        <ButtonWrapper onClick={toggleTheme} isDark={isDark}>
+        <BtnWrapper onClick={toggleTheme} isDark={isDark}>
           <Button isDark={!isDark}>
             <Sun />
           </Button>
           <Button isDark={isDark}>
             <Moon />
           </Button>
-        </ButtonWrapper>
+        </BtnWrapper>
 
         <Dropdown>
           <button onClick={toggleDropdown}>
@@ -242,7 +246,7 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
           </button>
 
           <Menu
-            variants={menuVaraints}
+            variants={menuVariants}
             initial={false}
             animate={openDropdown ? 'expanded' : 'collapsed'}
             transition={{ type: 'tween', duration: 0.15 }}
@@ -268,7 +272,7 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
           </Menu>
         </Dropdown>
       </Wrapper>
-    </Nav>
+    </Container>
   )
 }
 

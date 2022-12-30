@@ -124,14 +124,17 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'M PLUS Rounded 1c', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: ${props => props.theme.dark.bg};
+    background-color: ${props => props.theme.bgColor};
+    transition-property: background-color, color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
   }
 
   html,
   body {
     height: 100%;
-    line-height: 1.2;
-    color: ${props => props.theme.dark.primary};
+    line-height: 1.5;
+    color: ${props => props.theme.primary};
   }
 
   a {
@@ -150,6 +153,7 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     vertical-align: middle;
   }
+}
 `
 
 export default GlobalStyle

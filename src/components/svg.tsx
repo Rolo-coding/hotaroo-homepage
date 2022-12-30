@@ -1,5 +1,8 @@
-export const Catpaw = () => (
-  <svg
+import { motion, Variants } from 'framer-motion'
+
+export const Catpaw = ({ variants }: { variants: Variants }) => (
+  <motion.svg
+    variants={variants}
     xmlns="http://www.w3.org/2000/svg"
     version="1.0"
     width="360.000000pt"
@@ -18,7 +21,7 @@ export const Catpaw = () => (
       <path d="M2919 2416 c-162 -58 -309 -280 -309 -466 1 -156 112 -230 247 -165 122 60 238 218 269 367 19 91 11 153 -26 212 -40 62 -103 80 -181 52z" />
       <path d="M1750 1964 c-151 -42 -326 -149 -451 -273 -195 -195 -311 -450 -280 -617 28 -148 106 -257 226 -315 100 -48 158 -40 379 58 174 77 185 77 337 20 53 -20 125 -41 160 -46 199 -32 406 91 478 285 86 227 10 459 -221 680 -152 146 -298 214 -473 220 -69 2 -117 -1 -155 -12z" />
     </g>
-  </svg>
+  </motion.svg>
 )
 
 export const Github = () => (
