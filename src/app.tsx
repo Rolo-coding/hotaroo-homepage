@@ -22,14 +22,16 @@ const App: React.FC = () => {
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Container>
-        <Header isDark={isDark} toggleTheme={toggleTheme} />
-        <Router />
+        <>
+          <Header isDark={isDark} toggleTheme={toggleTheme} />
+          <Router />
+        </>
       </Container>
     </ThemeProvider>
   )
 }
 
-const Container = ({ children }: { children: any }) => {
+const Container = ({ children }: { children: JSX.Element }) => {
   const { pathname } = useLocation()
   useLayoutEffect(() => {
     window.scrollTo(0, 0)

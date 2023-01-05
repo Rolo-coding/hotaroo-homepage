@@ -1,17 +1,31 @@
 import React from 'react'
-import { Breakline, Container, containerVariants, Title } from './home'
+import { Helmet } from 'react-helmet-async'
+import { motion } from 'framer-motion'
+import { Breakline, Container, Title, containerVariants } from './home'
+import Langs from '../components/langs'
+import Cards from '../components/cards'
 
 const Works: React.FC = () => {
   return (
-    <Container
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-      transition={{ type: 'tween', duration: 0.4 }}
-    >
-      <Title>Works</Title>
-      <Breakline />
+    <Container variants={{}} initial="hidden" animate="visible" exit="hidden">
+      <Helmet>
+        <title>Hotaroo - Works</title>
+      </Helmet>
+      <>
+        <Langs />
+        <Breakline
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          exit={{ opacity: 0 }}
+        />
+        <motion.div
+          variants={containerVariants}
+          transition={{ type: 'tween', duration: 0.4 }}
+        >
+          <Title>Works</Title>
+          <Cards />
+        </motion.div>
+      </>
     </Container>
   )
 }

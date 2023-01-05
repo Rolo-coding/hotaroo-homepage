@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import styled, { css } from 'styled-components'
@@ -31,7 +31,6 @@ const Logo = styled(motion.div)`
     width: 2rem;
     height: 2rem;
   }
-
   a {
     padding: 0.5rem;
     font-size: 1.125rem;
@@ -51,7 +50,7 @@ const Tabs = styled.ul`
     ${flex}
   }
 
-  @media screen and (min-width: 40rem) {
+  @media screen and (min-width: 48rem) {
     display: flex;
   }
 `
@@ -80,9 +79,10 @@ const Underline = styled(motion.div)`
   background-color: #38b2ac;
 `
 
-const BtnWrapper = styled.div<{ isDark: boolean }>`
+const BtnWrapper = styled.div`
   padding: 1px;
-  background-color: ${props => (props.isDark ? 'rgb(82 82 91)' : '#805ad5')};
+  margin-left: auto;
+  background-color: ${props => props.theme.btnWrapperBg};
   border-radius: 1.5rem;
   cursor: pointer;
   &,
@@ -90,6 +90,10 @@ const BtnWrapper = styled.div<{ isDark: boolean }>`
     transition: all 0.15s ease-in-out;
   }
   ${flex}
+
+  @media screen and (min-width: 48rem) {
+    margin-right: 0.75rem;
+  }
 `
 
 const Button = styled.button<{ isDark: boolean }>`
@@ -100,25 +104,26 @@ const Button = styled.button<{ isDark: boolean }>`
 `
 
 const Dropdown = styled(motion.div)`
+  margin-right: 0.75rem;
   position: relative;
   button {
     padding: 0.5rem;
     background-color: transparent;
     border-radius: 0.25rem;
-    border: 1px solid #fff2;
+    border: 1px solid ${props => props.theme.borderColor};
     transition: background-color 0.25s ease-in-out;
     &:hover {
-      background-color: rgb(82 82 91 / 0.5);
+      background-color: ${props => props.theme.itemBg};
     }
 
     svg {
       width: 1.25rem;
       height: 1.25rem;
     }
+  }
 
-    @media screen and (min-width: 40rem) {
-      display: none;
-    }
+  @media screen and (min-width: 48rem) {
+    display: none;
   }
 `
 
@@ -126,28 +131,36 @@ const Menu = styled(motion.div)`
   width: 14rem;
   position: absolute;
   right: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.625rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  background-color: rgb(39 39 42 / 1);
+  background-color: ${props => props.theme.menuBg};
   border-radius: 0.25rem;
-  border: 1px solid rgb(63 63 70 / 0.5);
+  border: 1px solid rgb(63 63 70 / 0.43);
   transform-origin: right top;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 `
 
 const Item = styled(motion.div)`
   font-size: 1rem;
   line-height: 1.25;
-  padding: 0.5rem 1rem;
   cursor: pointer;
-  transition: background-color 0.25s ease-in-out;
-
-  &:hover {
-    background-color: rgb(82 82 91 / 0.5);
+  a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.25s ease-in-out;
+    &:hover {
+      background-color: ${props => props.theme.itemBg};
+    }
   }
 `
 
-const emptyVariants = {}
+const Anchor = styled.a.attrs({
+  target: '_blank',
+  rel: 'noopener noreferrer'
+})``
 
 const logoVariants = {
   normal: { transform: 'rotate(-30deg)' },
@@ -192,10 +205,17 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
     setOpenDropdown(prev => !prev)
   }
 
+  useEffect(() => {
+    if (!openDropdown) return
+    scrollY.onChange(y => {
+      y > 10 && setOpenDropdown(false)
+    })
+  }, [openDropdown, scrollY])
+
   return (
     <Container style={{ backgroundColor }}>
       <Wrapper>
-        <Logo variants={emptyVariants} initial="normal" whileHover="active">
+        <Logo variants={{}} initial="normal" whileHover="active">
           <Link to="/">
             <Catpaw variants={logoVariants} />
             <span>Hotaroo</span>
@@ -217,21 +237,15 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
               </Link>
             </Tab>
             <Tab>
-              <a
-                href="https://github.com/hotaroo-dev/hotaroo-homepage"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Anchor href="https://github.com/hotaroo-dev/hotaroo-homepage">
                 <Github />
                 <span>Source</span>
-              </a>
+              </Anchor>
             </Tab>
           </Tabs>
         </nav>
 
-        <div style={{ flex: 1 }}></div>
-
-        <BtnWrapper onClick={toggleTheme} isDark={isDark}>
+        <BtnWrapper onClick={toggleTheme}>
           <Button isDark={!isDark}>
             <Sun />
           </Button>
@@ -252,22 +266,27 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
             transition={{ type: 'tween', duration: 0.15 }}
           >
             <Item>
-              <Link to="/">
+              <Link to="/" onClick={toggleDropdown}>
                 <span>About</span>
               </Link>
             </Item>
             <Item>
-              <Link to="/">
+              <Link to="/works" onClick={toggleDropdown}>
                 <span>Works</span>
               </Link>
             </Item>
             <Item>
-              <Link to="/">Posts</Link>
+              <Link to="/posts" onClick={toggleDropdown}>
+                Posts
+              </Link>
             </Item>
             <Item>
-              <a href="https://github.com/Rolo-coding/hotaroo-homepage">
+              <Anchor
+                href="https://github.com/Rolo-coding/hotaroo-homepage"
+                onClick={toggleDropdown}
+              >
                 Source
-              </a>
+              </Anchor>
             </Item>
           </Menu>
         </Dropdown>

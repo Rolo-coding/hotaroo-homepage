@@ -1,5 +1,7 @@
 import React from 'react'
-import { Breakline, Container, containerVariants, Title } from './home'
+import { Helmet } from 'react-helmet-async'
+import { Container, Title, containerVariants, Breakline } from './home'
+import Cards from '../components/cards'
 
 const Posts: React.FC = () => {
   return (
@@ -10,8 +12,15 @@ const Posts: React.FC = () => {
       exit="hidden"
       transition={{ type: 'tween', duration: 0.4 }}
     >
-      <Title>Posts</Title>
-      <Breakline />
+      <Helmet>
+        <title>Hotaroo - Posts</title>
+      </Helmet>
+      <>
+        <div>
+          <Title>Posts</Title>
+        </div>
+        <Cards />
+      </>
     </Container>
   )
 }
