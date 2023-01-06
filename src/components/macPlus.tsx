@@ -3,10 +3,9 @@ import { motion } from 'framer-motion'
 import styled, { keyframes } from 'styled-components'
 
 const Stage = styled(motion.div)`
-  position: relative;
+  width: 100%;
   perspective: 1600px;
   perspective-origin: 50% 100px;
-  font-size: 18px;
 
   @font-face {
     font-family: 'apple_garamondregular';
@@ -19,6 +18,10 @@ const Stage = styled(motion.div)`
         format('svg');
     font-weight: normal;
     font-style: normal;
+  }
+
+  @media screen and (min-width: 40rem) {
+    font-size: 18px;
   }
 `
 
@@ -151,8 +154,12 @@ const Shadow = styled.figure`
   width: 10em;
   height: 11em;
   background: transparent;
-  transform: rotateX(90deg) translateZ(-7.4em) translateX(20em);
-  box-shadow: -20.2em 0 1.8em rgba(100, 90, 100, 0.4);
+  transform: rotateX(90deg) translateZ(-7.4em) translateX(12em);
+  box-shadow: -12.2em 0 1.8em rgba(100, 90, 100, 0.4);
+
+  @media screen and (max-width: 33.75rem) {
+    display: none !important;
+  }
 `
 
 const ScreenContainer = styled.figure`
@@ -270,7 +277,7 @@ const MacPlus: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Position variants={macVariants} initial="normal" animate="active">
+      <Position variants={macVariants} initial="normal">
         <Mac>
           <Top />
           <Front>
