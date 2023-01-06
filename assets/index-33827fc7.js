@@ -377,6 +377,7 @@ Error generating stack: `+i.message+`
   width: 100%;
   perspective: 1600px;
   perspective-origin: 50% 100px;
+  font-size: 18px;
 
   @font-face {
     font-family: 'apple_garamondregular';
@@ -389,10 +390,6 @@ Error generating stack: `+i.message+`
         format('svg');
     font-weight: normal;
     font-style: normal;
-  }
-
-  @media screen and (min-width: 40rem) {
-    font-size: 18px;
   }
 `,SP=I(je.div)`
   width: 9em;
