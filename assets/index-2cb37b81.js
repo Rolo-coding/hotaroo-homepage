@@ -565,7 +565,7 @@ Error generating stack: `+i.message+`
   border-left: 0.3em solid #e6e6e6;
   border-right: 0.3em solid #e6e6e6;
   border-radius: 0.25em;
-`,HP={normal:{transform:"none"},active:{transform:["rotateY(40deg)","rotateY(-40deg)","rotateY(40deg)"],transition:{type:"tween",duration:10,repeat:1/0}}},WP=()=>k(wP,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},children:k(SP,{variants:HP,initial:"normal",children:B(xP,{children:[k(CP,{}),B(kP,{children:[k(TP,{}),k(EP,{}),k(PP,{}),k(AP,{}),k($P,{children:B(NP,{children:[k(jP,{children:"hello, Hotaroo"}),k(bP,{})]})}),B(FP,{children:[k(BP,{}),k("span",{children:"Macintosh Plus"})]}),k(UP,{})]}),k(RP,{}),k(LP,{}),k(_P,{}),k(OP,{}),k(MP,{}),k(DP,{}),k(VP,{}),k(IP,{})]})})}),zf=I(je.main)`
+`,HP={normal:{transform:"none"},active:{transform:["rotateY(40deg)","rotateY(-40deg)","rotateY(40deg)"],transition:{type:"tween",duration:10,repeat:1/0}}},WP=()=>k(wP,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},children:k(SP,{variants:HP,initial:"normal",animate:"active",children:B(xP,{children:[k(CP,{}),B(kP,{children:[k(TP,{}),k(EP,{}),k(PP,{}),k(AP,{}),k($P,{children:B(NP,{children:[k(jP,{children:"hello, Hotaroo"}),k(bP,{})]})}),B(FP,{children:[k(BP,{}),k("span",{children:"Macintosh Plus"})]}),k(UP,{})]}),k(RP,{}),k(LP,{}),k(_P,{}),k(OP,{}),k(MP,{}),k(DP,{}),k(VP,{}),k(IP,{})]})})}),zf=I(je.main)`
   width: 100%;
   max-width: 48rem;
   margin-top: 2.5rem;
