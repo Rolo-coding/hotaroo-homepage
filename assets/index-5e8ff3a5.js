@@ -374,10 +374,9 @@ Error generating stack: `+i.message+`
     }
   }
 `,Vh=I.a.attrs({target:"_blank",rel:"noopener noreferrer"})``,gP={normal:{transform:"rotate(-30deg)"},active:{transform:"rotate(0deg)",transition:{type:"tween",duration:.2}}},yP={expanded:{opacity:1,scale:1,display:"block"},collapsed:{opacity:0,scale:.9,transitionEnd:{display:"none"}}},vP=({isDark:e,toggleTheme:t})=>{const[n,r]=S.useState(!1),{pathname:o}=Xn(),{scrollY:i}=nP(),s=e?"0 0 0":"255 255 255",a=TE(i,[0,60],[`rgb(${s} / 0)`,`rgb(${s} / 0.67)`]),l=()=>{r(u=>!u)};return S.useEffect(()=>{n&&i.onChange(u=>{u>10&&r(!1)})},[n,i]),k(uP,{style:{backgroundColor:a},children:B(cP,{children:[k(fP,{variants:{},initial:"normal",whileHover:"active",children:B(On,{to:"/",children:[k(rP,{variants:gP}),k("span",{children:"Hotaroo"})]})}),k("nav",{children:B(dP,{children:[k(Al,{children:B(On,{to:"/works",children:["Works"," ",o==="/works"&&k(Mh,{layoutId:"underline"})]})}),k(Al,{children:B(On,{to:"/posts",children:["Posts"," ",o==="/posts"&&k(Mh,{layoutId:"underline"})]})}),k(Al,{children:B(Vh,{href:"https://github.com/hotaroo-dev/hotaroo-homepage",children:[k(by,{}),k("span",{children:"Source"})]})})]})}),B(pP,{onClick:t,children:[k(Dh,{isDark:!e,children:k(iP,{})}),k(Dh,{isDark:e,children:k(sP,{})})]}),B(hP,{children:[k("button",{onClick:l,children:k(aP,{})}),B(mP,{variants:yP,initial:!1,animate:n?"expanded":"collapsed",transition:{type:"tween",duration:.15},children:[k(Ii,{children:k(On,{to:"/",onClick:l,children:k("span",{children:"About"})})}),k(Ii,{children:k(On,{to:"/works",onClick:l,children:k("span",{children:"Works"})})}),k(Ii,{children:k(On,{to:"/posts",onClick:l,children:"Posts"})}),k(Ii,{children:k(Vh,{href:"https://github.com/Rolo-coding/hotaroo-homepage",onClick:l,children:"Source"})})]})]})]})})},wP=I(je.div)`
-  position: relative;
+  width: 100%;
   perspective: 1600px;
   perspective-origin: 50% 100px;
-  font-size: 18px;
 
   @font-face {
     font-family: 'apple_garamondregular';
@@ -390,6 +389,10 @@ Error generating stack: `+i.message+`
         format('svg');
     font-weight: normal;
     font-style: normal;
+  }
+
+  @media screen and (min-width: 40rem) {
+    font-size: 18px;
   }
 `,SP=I(je.div)`
   width: 9em;
@@ -478,8 +481,12 @@ Error generating stack: `+i.message+`
   width: 10em;
   height: 11em;
   background: transparent;
-  transform: rotateX(90deg) translateZ(-7.4em) translateX(20em);
-  box-shadow: -20.2em 0 1.8em rgba(100, 90, 100, 0.4);
+  transform: rotateX(90deg) translateZ(-7.4em) translateX(12em);
+  box-shadow: -12.2em 0 1.8em rgba(100, 90, 100, 0.4);
+
+  @media screen and (max-width: 33.75rem) {
+    display: none !important;
+  }
 `,$P=I.figure`
   width: 7.25em;
   height: 5.25em;
@@ -558,7 +565,7 @@ Error generating stack: `+i.message+`
   border-left: 0.3em solid #e6e6e6;
   border-right: 0.3em solid #e6e6e6;
   border-radius: 0.25em;
-`,HP={normal:{transform:"none"},active:{transform:["rotateY(40deg)","rotateY(-40deg)","rotateY(40deg)"],transition:{type:"tween",duration:10,repeat:1/0}}},WP=()=>k(wP,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},children:k(SP,{variants:HP,initial:"normal",animate:"active",children:B(xP,{children:[k(CP,{}),B(kP,{children:[k(TP,{}),k(EP,{}),k(PP,{}),k(AP,{}),k($P,{children:B(NP,{children:[k(jP,{children:"hello, Hotaroo"}),k(bP,{})]})}),B(FP,{children:[k(BP,{}),k("span",{children:"Macintosh Plus"})]}),k(UP,{})]}),k(RP,{}),k(LP,{}),k(_P,{}),k(OP,{}),k(MP,{}),k(DP,{}),k(VP,{}),k(IP,{})]})})}),zf=I(je.main)`
+`,HP={normal:{transform:"none"},active:{transform:["rotateY(40deg)","rotateY(-40deg)","rotateY(40deg)"],transition:{type:"tween",duration:10,repeat:1/0}}},WP=()=>k(wP,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},children:k(SP,{variants:HP,initial:"normal",children:B(xP,{children:[k(CP,{}),B(kP,{children:[k(TP,{}),k(EP,{}),k(PP,{}),k(AP,{}),k($P,{children:B(NP,{children:[k(jP,{children:"hello, Hotaroo"}),k(bP,{})]})}),B(FP,{children:[k(BP,{}),k("span",{children:"Macintosh Plus"})]}),k(UP,{})]}),k(RP,{}),k(LP,{}),k(_P,{}),k(OP,{}),k(MP,{}),k(DP,{}),k(VP,{}),k(IP,{})]})})}),zf=I(je.main)`
   width: 100%;
   max-width: 48rem;
   margin-top: 2.5rem;
