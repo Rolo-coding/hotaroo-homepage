@@ -10,12 +10,12 @@ const Stage = styled(motion.div)`
 
   @font-face {
     font-family: 'apple_garamondregular';
-    src: url('../fonts/apple_garamond-webfont.eot');
-    src: url('../fonts/apple_garamond-webfont.eot?#iefix')
+    src: url('./fonts/apple_garamond-webfont.eot');
+    src: url('./fonts/apple_garamond-webfont.eot?#iefix')
         format('embedded-opentype'),
-      url('../fonts/apple_garamond-webfont.woff') format('woff'),
-      url('../fonts/apple_garamond-webfont.ttf') format('truetype'),
-      url('../fonts/apple_garamond-webfont.svg#apple_garamondregular')
+      url('./fonts/apple_garamond-webfont.woff') format('woff'),
+      url('./fonts/apple_garamond-webfont.ttf') format('truetype'),
+      url('./fonts/apple_garamond-webfont.svg#apple_garamondregular')
         format('svg');
     font-weight: normal;
     font-style: normal;

@@ -46,7 +46,7 @@ const Cards: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src={`/posts/post${post.id}.png`} alt={post.title} />
+            <Image src={`./posts/post${post.id}.png`} alt={post.title} />
             <Overview>{post.description}</Overview>
           </a>
         </Card>

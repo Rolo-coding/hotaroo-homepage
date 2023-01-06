@@ -173,7 +173,7 @@ const Home: React.FC = () => {
             Hello, I'm a student majoring in computer science based in Cambodia!
           </LongText>
           <Flex>
-            <Image src="/hotaroo.jpg" />
+            <Image src="./hotaroo.jpg" />
             <Info>
               <Name>Kay Sothearo</Name>
               <Text>Web Developer ( Frontend / Backend )</Text>
