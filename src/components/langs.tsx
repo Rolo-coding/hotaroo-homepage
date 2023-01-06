@@ -64,7 +64,7 @@ const Langs: React.FC = () => {
         {langs.slice(6, 12).map((lang, i) => (
           <span key={i + 6}>
             <Logo
-              src={`/langs/${lang}`}
+              src={`./langs/${lang}`}
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.2 }}
             />
