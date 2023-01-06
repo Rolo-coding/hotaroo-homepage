@@ -233,7 +233,7 @@ const Image = styled.span`
   height: 16px;
   top: -0.25em;
   left: 0;
-  background: url(/apple.png) no-repeat bottom;
+  background: url(./apple.png) no-repeat bottom;
   background-size: 100%;
 `
 
