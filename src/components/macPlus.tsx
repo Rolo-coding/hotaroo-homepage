@@ -277,7 +277,7 @@ const MacPlus: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Position variants={macVariants} initial="normal">
+      <Position variants={macVariants} initial="normal" animate="active">
         <Mac>
           <Top />
           <Front>
