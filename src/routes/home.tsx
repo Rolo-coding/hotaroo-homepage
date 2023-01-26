@@ -214,7 +214,7 @@ const Home: React.FC = () => {
               </Text>
               <Text>
                 <span>2019</span>
-                Passed the National Examinations ( Grade B )
+                Passed the National Examinations
               </Text>
               <Text>
                 <span>2023</span>
