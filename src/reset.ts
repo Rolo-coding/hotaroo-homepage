@@ -132,7 +132,7 @@ const GlobalStyle = createGlobalStyle`
 
   html,
   body {
-    height: 100%;
+    min-height: 100%;
     line-height: 1.5;
     color: ${props => props.theme.primary};
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { posts } from '../data'
-import { Text } from '../routes/home'
+import { Text } from '../style'
 
 const Container = styled.ul`
   display: grid;
@@ -33,11 +33,15 @@ const Overview = styled(Text)`
   opacity: 0.8;
 `
 
-const Cards: React.FC = () => {
+interface IProps {
+  offset?: number
+}
+
+const Cards: React.FC<IProps> = ({ offset }) => {
   return (
     <Container>
-      {posts.map(post => (
-        <Card key={post.id}>
+      {posts.slice(0, offset).map((post, idx) => (
+        <Card key={idx}>
           <a
             href={`https://github.com/hotaroo-dev/${post.title.replace(
               /\s/g,
@@ -46,7 +50,7 @@ const Cards: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src={`./posts/post${post.id}.png`} alt={post.title} />
+            <Image src={`./posts/post${idx}.jpg`} alt={post.title} />
             <Overview>{post.description}</Overview>
           </a>
         </Card>

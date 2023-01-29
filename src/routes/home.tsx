@@ -2,45 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Github, Instagram, Next } from '../components/svg'
 import MacPlus from '../components/macPlus'
-
-export const Container = styled(motion.main)`
-  width: 100%;
-  max-width: 48rem;
-  margin-top: 2.5rem;
-  margin-inline: auto;
-  padding-inline: 1.5rem;
-  padding-bottom: 1.5rem;
-`
-
-export const underline = css`
-  text-decoration-line: underline;
-  text-decoration-color: #3f3f46;
-  text-decoration-thickness: 0.25rem;
-  text-underline-offset: 0.375rem;
-`
-
-export const Title = styled(motion.h3)`
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-top: 0.75rem;
-  margin-bottom: 1rem;
-`
-
-export const BlockTitle = styled(Title)`
-  ${underline}
-`
-
-export const Breakline = styled(motion.hr)`
-  width: 100%;
-  border: 0;
-  border-color: ${props => props.theme.breakLine};
-  border-style: solid;
-  border-bottom-width: 1px;
-  margin: 1.5rem 0;
-`
+import Cards from '../components/cards'
+import { BlockTitle, Container, containerVariants, Text } from '../style'
 
 const Wrapper = styled.div`
   margin-bottom: 1.5rem;
@@ -49,14 +15,6 @@ const Wrapper = styled.div`
 const Flex = styled.div`
   display: flex;
   justify-content: center;
-`
-
-export const Text = styled.p`
-  font-size: 1rem;
-  font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
 `
 
 const LongText = styled(Text)`
@@ -137,6 +95,10 @@ const Button = styled.button`
   }
 `
 
+const Items = styled.ul`
+  margin-bottom: 1.25rem;
+`
+
 const Item = styled.li`
   a > button {
     box-shadow: none;
@@ -151,11 +113,6 @@ const Item = styled.li`
     }
   }
 `
-
-export const containerVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
-}
 
 const Home: React.FC = () => {
   return (
@@ -240,7 +197,7 @@ const Home: React.FC = () => {
 
           <div>
             <BlockTitle>On the Web</BlockTitle>
-            <ul>
+            <Items>
               <Item>
                 <AnchorTargetBlank href="https://github.com/hotaroo-dev">
                   <Button>
@@ -257,7 +214,8 @@ const Home: React.FC = () => {
                   </Button>
                 </AnchorTargetBlank>
               </Item>
-            </ul>
+            </Items>
+            <Cards offset={2} />
           </div>
         </motion.div>
       </>
