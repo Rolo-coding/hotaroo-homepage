@@ -3,38 +3,6 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { BlockTitle } from '../style'
 
-const Container = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(2, min-content);
-  gap: 0.625rem;
-  justify-content: center;
-`
-
-const Grid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(2, min-content);
-  gap: 0.625rem;
-`
-
-const Logo = styled(motion.img)`
-  width: 3.75rem;
-  height: 3.75rem;
-  background-color: #fff;
-  border: 2px solid #fff;
-  border-radius: 10rem;
-  cursor: pointer;
-`
-
-const firstCol = {
-  hidden: { x: -10, opacity: 0 },
-  visible: { x: 0, opacity: 1 }
-}
-
-const lastCol = {
-  hidden: { x: 10, opacity: 0 },
-  visible: { x: 0, opacity: 1 }
-}
-
 const Langs: React.FC = () => {
   const langs = [...Array(12)].map((_, i) => `lang${i + 1}.png`)
   return (
@@ -73,6 +41,38 @@ const Langs: React.FC = () => {
       </Grid>
     </Container>
   )
+}
+
+const Container = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 0.625rem;
+  justify-content: center;
+`
+
+const Grid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 0.625rem;
+`
+
+const Logo = styled(motion.img)`
+  width: 3.75rem;
+  height: 3.75rem;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10rem;
+  cursor: pointer;
+`
+
+const firstCol = {
+  hidden: { x: -10, opacity: 0 },
+  visible: { x: 0, opacity: 1 }
+}
+
+const lastCol = {
+  hidden: { x: 10, opacity: 0 },
+  visible: { x: 0, opacity: 1 }
 }
 
 export default Langs

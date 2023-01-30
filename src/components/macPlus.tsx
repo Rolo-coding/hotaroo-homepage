@@ -2,6 +2,47 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styled, { keyframes } from 'styled-components'
 
+const MacPlus: React.FC = () => {
+  return (
+    <Stage
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Position variants={macVariants} initial="normal" animate="active">
+        <Mac>
+          <Top />
+          <Front>
+            <BezelTop />
+            <BezelBottom />
+            <BezelLeft />
+            <BezelRight />
+            <ScreenContainer>
+              <Screen>
+                <Text>hello, Hotaroo</Text>
+                <Sheen />
+              </Screen>
+            </ScreenContainer>
+            <Logo>
+              <Image />
+              <span>Macintosh Plus</span>
+            </Logo>
+            <Floppy />
+          </Front>
+          <Back />
+          <Left />
+          <Right />
+          <BaseFront />
+          <BaseBack />
+          <BaseLeft />
+          <BaseRight />
+          <Shadow />
+        </Mac>
+      </Position>
+    </Stage>
+  )
+}
+
 const Stage = styled(motion.div)`
   width: 100%;
   perspective: 1600px;
@@ -265,47 +306,6 @@ const macVariants = {
       repeat: Infinity
     }
   }
-}
-
-const MacPlus: React.FC = () => {
-  return (
-    <Stage
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <Position variants={macVariants} initial="normal" animate="active">
-        <Mac>
-          <Top />
-          <Front>
-            <BezelTop />
-            <BezelBottom />
-            <BezelLeft />
-            <BezelRight />
-            <ScreenContainer>
-              <Screen>
-                <Text>hello, Hotaroo</Text>
-                <Sheen />
-              </Screen>
-            </ScreenContainer>
-            <Logo>
-              <Image />
-              <span>Macintosh Plus</span>
-            </Logo>
-            <Floppy />
-          </Front>
-          <Back />
-          <Left />
-          <Right />
-          <BaseFront />
-          <BaseBack />
-          <BaseLeft />
-          <BaseRight />
-          <Shadow />
-        </Mac>
-      </Position>
-    </Stage>
-  )
 }
 
 export default MacPlus

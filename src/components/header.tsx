@@ -4,6 +4,116 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import styled, { css } from 'styled-components'
 import { Catpaw, Github, Sun, Moon, Hamburger } from './svg'
 
+interface Props {
+  isDark: boolean
+  toggleTheme: () => void
+}
+
+const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
+  const [openDropdown, setOpenDropdown] = useState(false)
+  const { pathname } = useLocation()
+  const { scrollY } = useScroll()
+  const bg = isDark ? '0 0 0' : '255 255 255'
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 60],
+    [`rgb(${bg} / 0)`, `rgb(${bg} / 0.67)`]
+  )
+
+  const toggleDropdown = () => {
+    setOpenDropdown(prev => !prev)
+  }
+
+  useEffect(() => {
+    if (!openDropdown) return
+    scrollY.onChange(y => {
+      y > 10 && setOpenDropdown(false)
+    })
+  }, [openDropdown, scrollY])
+
+  return (
+    <Container style={{ backgroundColor }}>
+      <Wrapper>
+        <Logo variants={{}} initial="normal" whileHover="active">
+          <Link to="/">
+            <Catpaw variants={logoVariants} />
+            <span>Hotaroo</span>
+          </Link>
+        </Logo>
+
+        <nav>
+          <Tabs>
+            <Tab>
+              <Link to="/works">
+                Works{' '}
+                {pathname === '/works' && <Underline layoutId="underline" />}
+              </Link>
+            </Tab>
+            <Tab>
+              <Link to="/posts">
+                Posts{' '}
+                {pathname === '/posts' && <Underline layoutId="underline" />}
+              </Link>
+            </Tab>
+            <Tab>
+              <Anchor href="https://github.com/hotaroo-dev/hotaroo-homepage">
+                <Github />
+                <span>Source</span>
+              </Anchor>
+            </Tab>
+          </Tabs>
+        </nav>
+
+        <BtnWrapper onClick={toggleTheme}>
+          <Button isDark={!isDark}>
+            <Sun />
+          </Button>
+          <Button isDark={isDark}>
+            <Moon />
+          </Button>
+        </BtnWrapper>
+
+        <Dropdown>
+          <button onClick={toggleDropdown}>
+            <Hamburger />
+          </button>
+
+          <Menu
+            variants={menuVariants}
+            initial={false}
+            animate={openDropdown ? 'expanded' : 'collapsed'}
+            transition={{ type: 'tween', duration: 0.15 }}
+          >
+            <Item>
+              <Link to="/" onClick={toggleDropdown}>
+                <span>About</span>
+              </Link>
+            </Item>
+            <Item>
+              <Link to="/works" onClick={toggleDropdown}>
+                <span>Works</span>
+              </Link>
+            </Item>
+            <Item>
+              <Link to="/posts" onClick={toggleDropdown}>
+                Posts
+              </Link>
+            </Item>
+            <Item>
+              <Anchor
+                href="https://github.com/Rolo-coding/hotaroo-homepage"
+                onClick={toggleDropdown}
+              >
+                Source
+              </Anchor>
+            </Item>
+          </Menu>
+        </Dropdown>
+      </Wrapper>
+    </Container>
+  )
+}
+
 const Container = styled(motion.header)`
   z-index: 2;
   width: 100%;
@@ -183,116 +293,6 @@ const menuVariants = {
       display: 'none'
     }
   }
-}
-
-interface Props {
-  isDark: boolean
-  toggleTheme: () => void
-}
-
-const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
-  const [openDropdown, setOpenDropdown] = useState(false)
-  const { pathname } = useLocation()
-  const { scrollY } = useScroll()
-  const bg = isDark ? '0 0 0' : '255 255 255'
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 60],
-    [`rgb(${bg} / 0)`, `rgb(${bg} / 0.67)`]
-  )
-
-  const toggleDropdown = () => {
-    setOpenDropdown(prev => !prev)
-  }
-
-  useEffect(() => {
-    if (!openDropdown) return
-    scrollY.onChange(y => {
-      y > 10 && setOpenDropdown(false)
-    })
-  }, [openDropdown, scrollY])
-
-  return (
-    <Container style={{ backgroundColor }}>
-      <Wrapper>
-        <Logo variants={{}} initial="normal" whileHover="active">
-          <Link to="/">
-            <Catpaw variants={logoVariants} />
-            <span>Hotaroo</span>
-          </Link>
-        </Logo>
-
-        <nav>
-          <Tabs>
-            <Tab>
-              <Link to="/works">
-                Works{' '}
-                {pathname === '/works' && <Underline layoutId="underline" />}
-              </Link>
-            </Tab>
-            <Tab>
-              <Link to="/posts">
-                Posts{' '}
-                {pathname === '/posts' && <Underline layoutId="underline" />}
-              </Link>
-            </Tab>
-            <Tab>
-              <Anchor href="https://github.com/hotaroo-dev/hotaroo-homepage">
-                <Github />
-                <span>Source</span>
-              </Anchor>
-            </Tab>
-          </Tabs>
-        </nav>
-
-        <BtnWrapper onClick={toggleTheme}>
-          <Button isDark={!isDark}>
-            <Sun />
-          </Button>
-          <Button isDark={isDark}>
-            <Moon />
-          </Button>
-        </BtnWrapper>
-
-        <Dropdown>
-          <button onClick={toggleDropdown}>
-            <Hamburger />
-          </button>
-
-          <Menu
-            variants={menuVariants}
-            initial={false}
-            animate={openDropdown ? 'expanded' : 'collapsed'}
-            transition={{ type: 'tween', duration: 0.15 }}
-          >
-            <Item>
-              <Link to="/" onClick={toggleDropdown}>
-                <span>About</span>
-              </Link>
-            </Item>
-            <Item>
-              <Link to="/works" onClick={toggleDropdown}>
-                <span>Works</span>
-              </Link>
-            </Item>
-            <Item>
-              <Link to="/posts" onClick={toggleDropdown}>
-                Posts
-              </Link>
-            </Item>
-            <Item>
-              <Anchor
-                href="https://github.com/Rolo-coding/hotaroo-homepage"
-                onClick={toggleDropdown}
-              >
-                Source
-              </Anchor>
-            </Item>
-          </Menu>
-        </Dropdown>
-      </Wrapper>
-    </Container>
-  )
 }
 
 export default Navbar

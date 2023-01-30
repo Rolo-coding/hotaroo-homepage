@@ -3,6 +3,32 @@ import styled from 'styled-components'
 import { posts } from '../data'
 import { Text } from '../style'
 
+interface IProps {
+  offset?: number
+}
+
+const Cards: React.FC<IProps> = ({ offset }) => {
+  return (
+    <Container>
+      {posts.slice(0, offset).map((post, idx) => (
+        <Card key={idx}>
+          <a
+            href={`https://github.com/hotaroo-dev/${post.title.replace(
+              /\s/g,
+              '-'
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={`./posts/post${idx}.jpg`} alt={post.title} />
+            <Overview>{post.description}</Overview>
+          </a>
+        </Card>
+      ))}
+    </Container>
+  )
+}
+
 const Container = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -32,31 +58,5 @@ const Overview = styled(Text)`
   margin-top: 0.75rem;
   opacity: 0.8;
 `
-
-interface IProps {
-  offset?: number
-}
-
-const Cards: React.FC<IProps> = ({ offset }) => {
-  return (
-    <Container>
-      {posts.slice(0, offset).map((post, idx) => (
-        <Card key={idx}>
-          <a
-            href={`https://github.com/hotaroo-dev/${post.title.replace(
-              /\s/g,
-              '-'
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src={`./posts/post${idx}.jpg`} alt={post.title} />
-            <Overview>{post.description}</Overview>
-          </a>
-        </Card>
-      ))}
-    </Container>
-  )
-}
 
 export default Cards
