@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from './theme'
 import GlobalStyle from './reset'
@@ -22,10 +23,10 @@ const App: React.FC = () => {
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Container>
-        <>
+        <HelmetProvider>
           <Header isDark={isDark} toggleTheme={toggleTheme} />
           <Router />
-        </>
+        </HelmetProvider>
       </Container>
     </ThemeProvider>
   )
