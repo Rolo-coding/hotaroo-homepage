@@ -1,6 +1,6 @@
 import { motion, Variants } from 'framer-motion'
 
-export const Catpaw = ({ variants }: { variants: Variants }) => (
+const Catpaw = ({ variants }: { variants?: Variants }) => (
   <motion.svg
     variants={variants}
     xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export const Catpaw = ({ variants }: { variants: Variants }) => (
   </motion.svg>
 )
 
-export const Github = () => (
+const Github = () => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -38,7 +38,7 @@ export const Github = () => (
   </svg>
 )
 
-export const Instagram = () => (
+const Instagram = () => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -55,7 +55,7 @@ export const Instagram = () => (
   </svg>
 )
 
-export const Sun = () => (
+const Sun = () => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -69,7 +69,7 @@ export const Sun = () => (
   </svg>
 )
 
-export const Moon = () => (
+const Moon = () => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -83,7 +83,7 @@ export const Moon = () => (
   </svg>
 )
 
-export const Hamburger = () => (
+const Hamburger = () => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -103,7 +103,7 @@ export const Hamburger = () => (
   </svg>
 )
 
-export const Next = () => (
+const Next = () => (
   <svg
     viewBox="0 0 24 24"
     focusable="false"
@@ -116,3 +116,5 @@ export const Next = () => (
     ></path>
   </svg>
 )
+
+export { Catpaw, Github, Instagram, Sun, Moon, Hamburger, Next }
