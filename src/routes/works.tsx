@@ -3,7 +3,14 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import Langs from '../components/langs'
 import Cards from '../components/cards'
-import { Breakline, Container, Title, containerVariants } from '../style'
+import {
+  Breakline,
+  Container,
+  Title,
+  containerVariants,
+  underlineOpacity,
+  tween
+} from '../style'
 
 const Works: React.FC = () => {
   return (
@@ -11,21 +18,12 @@ const Works: React.FC = () => {
       <Helmet>
         <title>Hotaroo - Works</title>
       </Helmet>
-      <>
-        <Langs />
-        <Breakline
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          exit={{ opacity: 0 }}
-        />
-        <motion.div
-          variants={containerVariants}
-          transition={{ type: 'tween', duration: 0.4 }}
-        >
-          <Title>Works</Title>
-          <Cards />
-        </motion.div>
-      </>
+      <Langs />
+      <Breakline variants={underlineOpacity} />
+      <motion.div variants={containerVariants} transition={tween}>
+        <Title>Works</Title>
+        <Cards />
+      </motion.div>
     </Container>
   )
 }

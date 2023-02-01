@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { posts } from '../data'
-import { Text } from '../style'
+import Image, { Text } from '../style'
 
 interface IProps {
   offset?: number
@@ -45,13 +45,12 @@ const Card = styled.li`
     flex-direction: column;
     align-items: center;
   }
-`
-
-const Image = styled.img`
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 0.5rem;
-  box-shadow: #0003 0px 1px 2px 0px, #0002 0px 1px 3px 1px;
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+    box-shadow: #0003 0px 1px 2px 0px, #0002 0px 1px 3px 1px;
+  }
 `
 
 const Overview = styled(Text)`

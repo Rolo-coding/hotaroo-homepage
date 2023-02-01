@@ -6,7 +6,13 @@ import styled from 'styled-components'
 import { Github, Instagram, Next } from '../components/svg'
 import MacPlus from '../components/macPlus'
 import Cards from '../components/cards'
-import { BlockTitle, Container, containerVariants, Text } from '../style'
+import Image, {
+  BlockTitle,
+  Container,
+  Text,
+  containerVariants,
+  tween
+} from '../style'
 
 const Home: React.FC = () => {
   return (
@@ -14,105 +20,99 @@ const Home: React.FC = () => {
       <Helmet>
         <title>Hotaroo - Homepage</title>
       </Helmet>
-      <>
-        <MacPlus />
-        <motion.div
-          variants={containerVariants}
-          transition={{ type: 'tween', duration: 0.4 }}
-        >
-          <LongText>
-            Hello, I'm a student majoring in computer science based in Cambodia!
-          </LongText>
-          <Flex>
-            <Image src="./hotaroo.jpg" />
-            <Info>
-              <Name>Kay Sothearo</Name>
-              <Text>Web Developer ( Frontend / Backend )</Text>
-            </Info>
-          </Flex>
+      <MacPlus />
+      <motion.div variants={containerVariants} transition={tween}>
+        <LongText>
+          Hello, I'm a student majoring in computer science based in Cambodia!
+        </LongText>
+        <Flex>
+          <Image src="./hotaroo.png" alt="hotaroo face" />
+          <Info>
+            <Name>Kay Sothearo</Name>
+            <Text>Web Developer ( Frontend / Backend )</Text>
+          </Info>
+        </Flex>
 
-          <Wrapper>
-            <BlockTitle>Work</BlockTitle>
-            <Paragraph>
-              <Anchor href="mailto:kaysothearo19@gmail.com">Hotaroo</Anchor> is
-              a student and full-stack developer based in Phnom Penh. He is not
-              the most talkative guy, and prefers his work to do the talk. On
-              some of these projects he worked alone, but on some he worked on a
-              team and definitely enjoyed teamwork. When not online, he enjoys
-              spending time with his family and sometimes staying alone and
-              watching movies. Honestly think it is important to balance the
-              long hours we spend in front of a computer screen with some
-              physical activity, and that’s exactly what he does in his leisure
-              time.
-            </Paragraph>
-          </Wrapper>
+        <Wrapper>
+          <BlockTitle>Work</BlockTitle>
+          <Paragraph>
+            <Anchor href="mailto:kaysothearo19@gmail.com">Hotaroo</Anchor> is a
+            student and full-stack developer based in Phnom Penh. He is not the
+            most talkative guy, and prefers his work to do the talk. On some of
+            these projects he worked alone, but on some he worked on a team and
+            definitely enjoyed teamwork. When not online, he enjoys spending
+            time with his family and sometimes staying alone and watching
+            movies. Honestly think it is important to balance the long hours we
+            spend in front of a computer screen with some physical activity, and
+            that’s exactly what he does in his leisure time.
+          </Paragraph>
+        </Wrapper>
 
-          <Flex>
-            <Link to="/works">
-              <Button>
-                <span>My portfolio</span>
-                <Next />
-              </Button>
-            </Link>
-          </Flex>
+        <Flex>
+          <Link to="/works">
+            <Button>
+              <span>My portfolio</span>
+              <Next />
+            </Button>
+          </Link>
+        </Flex>
 
-          <Wrapper>
-            <BlockTitle>Bio</BlockTitle>
-            <Row>
-              <Text>
-                <span>2001</span>
-                Born in Takhmao, Cambodia
-              </Text>
-              <Text>
-                <span>2019</span>
-                Passed the National Examinations
-              </Text>
-              <Text>
-                <span>2023</span>
-                Completed Bachelor's in Computer Science
-              </Text>
-              <Text>
-                <span>2023 to present</span>
-                Job Hunting
-              </Text>
-            </Row>
-          </Wrapper>
-
-          <Wrapper>
-            <BlockTitle>I &#9829;</BlockTitle>
+        <Wrapper>
+          <BlockTitle>Bio</BlockTitle>
+          <Row>
             <Text>
-              Art, Music,{' '}
-              <AnchorTargetBlank href="https://animedao.to">
-                Watching Anime
-              </AnchorTargetBlank>
-              , Learning from Others
+              <span>2001</span>
+              Born in Takhmao, Cambodia
             </Text>
-          </Wrapper>
+            <Text>
+              <span>2019</span>
+              Passed the National Examinations
+            </Text>
+            <Text>
+              <span>2023</span>
+              Completed Bachelor's in Computer Science
+            </Text>
+            <Text>
+              <span>2023 to present</span>
+              Job Hunting
+            </Text>
+          </Row>
+        </Wrapper>
 
-          <div>
-            <BlockTitle>On the Web</BlockTitle>
-            <Items>
-              <Item>
-                <AnchorTargetBlank href="https://github.com/hotaroo-dev">
-                  <Button>
-                    <Github />
-                    <span>@hotaroo-dev</span>
-                  </Button>
-                </AnchorTargetBlank>
-              </Item>
-              <Item>
-                <AnchorTargetBlank href="#">
-                  <Button>
-                    <Instagram />
-                    <span>@hotaroo</span>
-                  </Button>
-                </AnchorTargetBlank>
-              </Item>
-            </Items>
-            <Cards offset={2} />
-          </div>
-        </motion.div>
-      </>
+        <Wrapper>
+          <BlockTitle>I &#9829;</BlockTitle>
+          <Text>
+            Art, Music,{' '}
+            <AnchorTargetBlank href="https://animedao.to">
+              Watching Anime
+            </AnchorTargetBlank>
+            , Learning from Others
+          </Text>
+        </Wrapper>
+
+        <div>
+          <BlockTitle>On the Web</BlockTitle>
+          <Items>
+            <Item>
+              <AnchorTargetBlank href="https://github.com/hotaroo-dev">
+                <Button>
+                  <Github />
+                  <span>@hotaroo-dev</span>
+                </Button>
+              </AnchorTargetBlank>
+            </Item>
+            <Item>
+              <AnchorTargetBlank href="#">
+                <Button>
+                  <Instagram />
+                  <span>@hotaroo</span>
+                </Button>
+              </AnchorTargetBlank>
+            </Item>
+          </Items>
+          <Cards offset={2} />
+        </div>
+      </motion.div>
     </Container>
   )
 }
@@ -124,6 +124,13 @@ const Wrapper = styled.div`
 const Flex = styled.div`
   display: flex;
   justify-content: center;
+  img {
+    order: 1;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 0.25rem solid #204529;
+  }
 `
 
 const LongText = styled(Text)`
@@ -133,14 +140,6 @@ const LongText = styled(Text)`
   padding: 0.875rem;
   background-color: ${props => props.theme.textBg};
   transition: background-color 0.25s ease-in-out;
-`
-
-const Image = styled.img`
-  order: 1;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 0.25rem solid #204529;
 `
 
 const Info = styled.div`

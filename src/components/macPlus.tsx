@@ -1,14 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styled, { keyframes } from 'styled-components'
+import { opacity } from '../style'
 
 const MacPlus: React.FC = () => {
   return (
-    <Stage
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <Stage variants={opacity}>
       <Position variants={macVariants} initial="normal" animate="active">
         <Mac>
           <Top />
@@ -48,19 +45,6 @@ const Stage = styled(motion.div)`
   perspective: 1600px;
   perspective-origin: 50% 100px;
   font-size: 18px;
-
-  @font-face {
-    font-family: 'apple_garamondregular';
-    src: url('./fonts/apple_garamond-webfont.eot');
-    src: url('./fonts/apple_garamond-webfont.eot?#iefix')
-        format('embedded-opentype'),
-      url('./fonts/apple_garamond-webfont.woff') format('woff'),
-      url('./fonts/apple_garamond-webfont.ttf') format('truetype'),
-      url('./fonts/apple_garamond-webfont.svg#apple_garamondregular')
-        format('svg');
-    font-weight: normal;
-    font-style: normal;
-  }
 `
 
 const Position = styled(motion.div)`
