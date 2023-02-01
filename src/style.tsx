@@ -1,7 +1,8 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
-export const Container = styled(motion.main)`
+const Container = styled(motion.main)`
   width: 100%;
   max-width: 48rem;
   margin-top: 2.5rem;
@@ -10,25 +11,25 @@ export const Container = styled(motion.main)`
   padding-bottom: 1.5rem;
 `
 
-export const underline = css`
+const underline = css`
   text-decoration-line: underline;
   text-decoration-color: #3f3f46;
   text-decoration-thickness: 0.25rem;
   text-underline-offset: 0.375rem;
 `
 
-export const Title = styled(motion.h3)`
+const Title = styled(motion.h3)`
   font-size: 1.25rem;
   font-weight: 700;
   margin-top: 0.75rem;
   margin-bottom: 1rem;
 `
 
-export const BlockTitle = styled(Title)`
+const BlockTitle = styled(Title)`
   ${underline}
 `
 
-export const Breakline = styled(motion.hr)`
+const Breakline = styled(motion.hr)`
   width: 100%;
   border: 0;
   border-color: ${props => props.theme.breakLine};
@@ -37,7 +38,7 @@ export const Breakline = styled(motion.hr)`
   margin: 1.5rem 0;
 `
 
-export const Text = styled.p`
+const Text = styled.p`
   font-size: 1rem;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -45,7 +46,46 @@ export const Text = styled.p`
     sans-serif;
 `
 
-export const containerVariants = {
+const containerVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: { y: 0, opacity: 1 }
 }
+
+const underlineOpacity = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 0.5 }
+}
+
+const opacity = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+}
+
+const tween = {
+  type: 'tween',
+  duration: 0.4
+}
+
+export {
+  Container,
+  Title,
+  BlockTitle,
+  Breakline,
+  Text,
+  containerVariants,
+  underlineOpacity,
+  underline,
+  opacity,
+  tween
+}
+
+interface IImage {
+  src: string
+  alt?: string
+}
+
+const Image = React.memo(({ src, alt }: IImage) => {
+  return <img src={src} alt={alt} />
+})
+
+export default Image
