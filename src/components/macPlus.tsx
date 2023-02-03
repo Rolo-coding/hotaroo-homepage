@@ -50,6 +50,7 @@ const Stage = styled(motion.div)`
 const Position = styled(motion.div)`
   width: 9em;
   margin-inline: auto;
+  margin-top: 3.4em;
   margin-bottom: 5.5em;
   transform-style: preserve-3d;
 `

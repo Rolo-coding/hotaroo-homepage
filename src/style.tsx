@@ -1,11 +1,11 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
 const Container = styled(motion.main)`
   width: 100%;
   max-width: 48rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   margin-inline: auto;
   padding-inline: 1.5rem;
   padding-bottom: 1.5rem;
@@ -47,8 +47,23 @@ const Text = styled.p`
 `
 
 const containerVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 25, opacity: 0 },
   visible: { y: 0, opacity: 1 }
+}
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 1.5,
+    filter: 'blur(40px)'
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0)',
+    transition: { delay: 0.5 }
+  },
+  exit: { opacity: 0, transition: { delay: 0 } }
 }
 
 const underlineOpacity = {
@@ -73,6 +88,7 @@ export {
   Breakline,
   Text,
   containerVariants,
+  imageVariants,
   underlineOpacity,
   underline,
   opacity,
@@ -82,10 +98,11 @@ export {
 interface IImage {
   src: string
   alt?: string
+  variants?: Variants
 }
 
-const Image = React.memo(({ src, alt }: IImage) => {
-  return <img src={src} alt={alt} />
+const Image = React.memo(({ src, alt, variants }: IImage) => {
+  return <motion.img src={src} alt={alt} variants={variants} />
 })
 
 export default Image

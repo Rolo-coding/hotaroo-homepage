@@ -11,6 +11,7 @@ import Image, {
   Container,
   Text,
   containerVariants,
+  imageVariants,
   tween
 } from '../style'
 
@@ -26,7 +27,18 @@ const Home: React.FC = () => {
           Hello, I'm a student majoring in computer science based in Cambodia!
         </LongText>
         <Flex>
-          <Image src="./hotaroo.png" alt="hotaroo face" />
+          <ImgWrapper
+            variants={{}}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <Image
+              variants={imageVariants}
+              src="./hotaroo.png"
+              alt="hotaroo face"
+            />
+          </ImgWrapper>
           <Info>
             <Name>Kay Sothearo</Name>
             <Text>Web Developer ( Frontend / Backend )</Text>
@@ -124,12 +136,23 @@ const Wrapper = styled.div`
 const Flex = styled.div`
   display: flex;
   justify-content: center;
+`
+
+const ImgWrapper = styled(motion.div)`
+  order: 1;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
   img {
-    order: 1;
-    width: 120px;
-    height: 120px;
+    inset: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     border: 0.25rem solid #204529;
+    transition: opacity, transform, filter 1.2s ease;
   }
 `
 
