@@ -410,7 +410,7 @@ Error generating stack: `+i.message+`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-`,Ff={hidden:{y:25,opacity:0},visible:{y:0,opacity:1}},kP={hidden:{opacity:0,scale:1.5,filter:"blur(40px)"},visible:{opacity:1,scale:1,filter:"blur(0)",transition:{delay:.5}},exit:{opacity:0,transition:{delay:0}}},TP={hidden:{opacity:0},visible:{opacity:.5}},Uy={hidden:{opacity:0},visible:{opacity:1}},qo={type:"tween",duration:.4},Gs=Te.memo(({src:e,alt:t,variants:n})=>k(Oe.img,{src:e,alt:t,variants:n})),EP=()=>k(PP,{variants:Uy,children:k(AP,{variants:ZP,initial:"normal",animate:"active",children:H(RP,{children:[k(LP,{}),H(OP,{children:[k(_P,{}),k(MP,{}),k(DP,{}),k(VP,{}),k(UP,{children:H(HP,{children:[k(YP,{children:"hello, Hotaroo"}),k(GP,{})]})}),H(KP,{children:[k(QP,{}),k("span",{children:"Macintosh Plus"})]}),k(XP,{})]}),k(IP,{}),k(NP,{}),k($P,{}),k(zP,{}),k(jP,{}),k(bP,{}),k(FP,{}),k(BP,{})]})})}),PP=I(Oe.div)`
+`,Ff={hidden:{y:25,opacity:0},visible:{y:0,opacity:1}},kP={hidden:{opacity:0,scale:1.5,filter:"blur(40px)"},visible:{opacity:1,scale:1,filter:"blur(0)",transition:{type:"tween",duration:1,delay:.4}},exit:{opacity:0,transition:{delay:0}}},TP={hidden:{opacity:0},visible:{opacity:.5}},Uy={hidden:{opacity:0},visible:{opacity:1}},qo={type:"tween",duration:.4},Gs=Te.memo(({src:e,alt:t,variants:n})=>k(Oe.img,{src:e,alt:t,variants:n})),EP=()=>k(PP,{variants:Uy,children:k(AP,{variants:ZP,initial:"normal",animate:"active",children:H(RP,{children:[k(LP,{}),H(OP,{children:[k(_P,{}),k(MP,{}),k(DP,{}),k(VP,{}),k(UP,{children:H(HP,{children:[k(YP,{children:"hello, Hotaroo"}),k(GP,{})]})}),H(KP,{children:[k(QP,{}),k("span",{children:"Macintosh Plus"})]}),k(XP,{})]}),k(IP,{}),k(NP,{}),k($P,{}),k(zP,{}),k(jP,{}),k(bP,{}),k(FP,{}),k(BP,{})]})})}),PP=I(Oe.div)`
   width: 100%;
   perspective: 1600px;
   perspective-origin: 50% 100px;
@@ -629,7 +629,7 @@ Error generating stack: `+i.message+`
     height: 100%;
     border-radius: 50%;
     border: 0.25rem solid #204529;
-    transition: opacity, transform, filter 1.2s ease;
+    transition: filter 1s ease;
   }
 `,o3=I(bt)`
   text-align: center;
