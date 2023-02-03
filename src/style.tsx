@@ -61,7 +61,7 @@ const imageVariants = {
     opacity: 1,
     scale: 1,
     filter: 'blur(0)',
-    transition: { delay: 0.5 }
+    transition: { type: 'tween', duration: 1, delay: 0.4 }
   },
   exit: { opacity: 0, transition: { delay: 0 } }
 }
