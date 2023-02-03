@@ -622,6 +622,7 @@ Error generating stack: `+i.message+`
   position: relative;
   overflow: hidden;
   border-radius: 50%;
+  transform: translateZ(0);
   img {
     inset: 0;
     position: absolute;
