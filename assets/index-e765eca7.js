@@ -474,6 +474,7 @@ Error generating stack: `+o.message+`
     font-size: 2.65rem;
     padding: 0.25rem 0.75rem;
     margin-right: 0.4rem;
+    border-radius: 0.1rem;
     float: left;
   }
 `,LP=Y.div`
