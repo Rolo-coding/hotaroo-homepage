@@ -465,9 +465,17 @@ Error generating stack: `+o.message+`
   line-height: 1.5;
   font-weight: 700;
 `,RP=Y(bt)`
-  text-indent: 1rem;
   text-align: justify;
   hyphens: auto;
+  &:first-letter {
+    color: #fff;
+    background-color: ${e=>e.theme.anchor};
+    line-height: 1.5;
+    font-size: 2.65rem;
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.4rem;
+    float: left;
+  }
 `,LP=Y.div`
   span {
     font-weight: 600;
