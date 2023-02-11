@@ -30,7 +30,7 @@ export const lightTheme: DefaultTheme = {
   menuBg: '#f4f5f0',
   itemBg: '#edf3f7',
   btnWrapperBg: '#805ad5',
-  primary: '#202020',
+  primary: '#181818',
   accent: '#000',
   anchor: '#3d7aed',
   button: {
