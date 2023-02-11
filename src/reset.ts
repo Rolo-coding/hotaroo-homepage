@@ -125,9 +125,6 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: ${props => props.theme.bgColor};
-    transition-property: background-color, color;
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in-out;
   }
 
   html,

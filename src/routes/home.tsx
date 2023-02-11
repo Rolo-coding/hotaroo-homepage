@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Github, Instagram, Next } from '../components/svg'
-import MacPlus from '../components/macPlus'
 import Cards from '../components/cards'
 import Image, {
   BlockTitle,
@@ -12,30 +11,31 @@ import Image, {
   Text,
   containerVariants,
   imageVariants,
-  tween
+  opacity,
+  delay
 } from '../style'
 
 const Home: React.FC = () => {
   return (
-    <Container variants={{}} initial="hidden" animate="visible" exit="hidden">
+    <Container>
       <Helmet>
         <title>Hotaroo - Homepage</title>
       </Helmet>
-      <MacPlus />
-      <motion.div variants={containerVariants} transition={tween}>
-        <LongText>
+      <motion.div
+        variants={opacity}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        transition={window.innerWidth < 640 ? {} : delay}
+      >
+        <LongText variants={containerVariants}>
           Hello, I'm a student majoring in computer science based in Cambodia!
         </LongText>
-        <Flex>
-          <ImgWrapper
-            variants={{}}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
+        <Flex variants={containerVariants}>
+          <ImgWrapper>
             <Image
               variants={imageVariants}
-              src="./hotaroo.png"
+              src="./hotaroo.jpg"
               alt="hotaroo face"
             />
           </ImgWrapper>
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
           </Info>
         </Flex>
 
-        <Wrapper>
+        <Wrapper variants={containerVariants}>
           <BlockTitle>Work</BlockTitle>
           <Paragraph>
             <Anchor href="mailto:kaysothearo19@gmail.com">Hotaroo</Anchor> is a
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
           </Paragraph>
         </Wrapper>
 
-        <Flex>
+        <Flex variants={containerVariants}>
           <Link to="/works">
             <Button>
               <span>My portfolio</span>
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
           </Link>
         </Flex>
 
-        <Wrapper>
+        <Wrapper variants={containerVariants}>
           <BlockTitle>Bio</BlockTitle>
           <Row>
             <Text>
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
           </Row>
         </Wrapper>
 
-        <Wrapper>
+        <Wrapper variants={containerVariants}>
           <BlockTitle>I &#9829;</BlockTitle>
           <Text>
             Art, Music,{' '}
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
           </Text>
         </Wrapper>
 
-        <div>
+        <motion.div variants={containerVariants}>
           <BlockTitle>On the Web</BlockTitle>
           <Items>
             <Item>
@@ -123,17 +123,17 @@ const Home: React.FC = () => {
             </Item>
           </Items>
           <Cards offset={2} />
-        </div>
+        </motion.div>
       </motion.div>
     </Container>
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   margin-bottom: 1.5rem;
 `
 
-const Flex = styled.div`
+const Flex = styled(motion.div)`
   display: flex;
   justify-content: center;
 `
@@ -163,7 +163,6 @@ const LongText = styled(Text)`
   margin-bottom: 1.5rem;
   padding: 0.875rem;
   background-color: ${props => props.theme.textBg};
-  transition: background-color 0.25s ease-in-out;
 `
 
 const Info = styled.div`
@@ -177,9 +176,18 @@ const Name = styled.h3`
 `
 
 const Paragraph = styled(Text)`
-  text-indent: 1rem;
   text-align: justify;
   hyphens: auto;
+  &:first-letter {
+    color: #fff;
+    background-color: ${props => props.theme.anchor};
+    line-height: 1.5;
+    font-size: 2.65rem;
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.4rem;
+    border-radius: 0.1rem;
+    float: left;
+  }
 `
 
 const Row = styled.div`

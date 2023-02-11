@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Container, Title, containerVariants, tween } from '../style'
+import { Container, Title, containerVariants, spring } from '../style'
 import Cards from '../components/cards'
 
 const Posts: React.FC = () => {
@@ -10,7 +10,7 @@ const Posts: React.FC = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      transition={tween}
+      transition={spring}
     >
       <Helmet>
         <title>Hotaroo - Posts</title>

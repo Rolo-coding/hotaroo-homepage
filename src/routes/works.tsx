@@ -9,7 +9,8 @@ import {
   Title,
   containerVariants,
   underlineOpacity,
-  tween
+  tween,
+  spring
 } from '../style'
 
 const Works: React.FC = () => {
@@ -19,8 +20,8 @@ const Works: React.FC = () => {
         <title>Hotaroo - Works</title>
       </Helmet>
       <Langs />
-      <Breakline variants={underlineOpacity} />
-      <motion.div variants={containerVariants} transition={tween}>
+      <Breakline variants={underlineOpacity} transition={tween} />
+      <motion.div variants={containerVariants} transition={spring}>
         <Title>Works</Title>
         <Cards />
       </motion.div>
