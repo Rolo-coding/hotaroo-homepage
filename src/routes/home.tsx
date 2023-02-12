@@ -163,6 +163,7 @@ const LongText = styled(Text)`
   margin-bottom: 1.5rem;
   padding: 0.875rem;
   background-color: ${props => props.theme.textBg};
+  transition: background-color 0.25s ease-in-out;
 `
 
 const Info = styled.div`
@@ -181,6 +182,7 @@ const Paragraph = styled(Text)`
   &:first-letter {
     color: #fff;
     background-color: ${props => props.theme.anchor};
+    transition: background-color 0.25s ease-in-out;
     line-height: 1.5;
     font-size: 2.65rem;
     padding: 0.25rem 0.75rem;
@@ -204,6 +206,7 @@ const Anchor = styled.a`
   outline-offset: 2px;
   text-decoration: none;
   text-underline-offset: 3px;
+  transition: color 0.25s ease-in-out;
   &:hover {
     text-decoration: underline;
   }

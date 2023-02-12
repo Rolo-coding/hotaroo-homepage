@@ -13,7 +13,7 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const { pathname } = useLocation()
   const { scrollY } = useScroll()
-  const bg = isDark ? '0 0 0' : '255 255 255'
+  const bg = isDark ? '11 11 11' : '255 255 255'
   const backgroundColor = useTransform(
     scrollY,
     [0, 60],
@@ -137,6 +137,8 @@ const Wrapper = styled.div`
 `
 
 const Logo = styled(motion.div)`
+  color: ${props => props.theme.primary};
+  transition: color 0.25s ease-in-out;
   svg {
     width: 2rem;
     height: 2rem;
@@ -170,8 +172,10 @@ const Tab = styled.li`
   a {
     gap: 0.25rem;
     font-weight: 400;
+    color: ${props => props.theme.primary};
     padding: 0.5rem;
     padding-bottom: 0.25rem;
+    transition: color 0.25s ease-in-out;
     &:hover {
       color: ${props => props.theme.accent};
     }
@@ -218,10 +222,13 @@ const Dropdown = styled(motion.div)`
   position: relative;
   button {
     padding: 0.5rem;
+    color: ${props => props.theme.primary};
     background-color: transparent;
     border-radius: 0.25rem;
     border: 1px solid ${props => props.theme.borderColor};
-    transition: background-color 0.25s ease-in-out;
+    transition-property: background-color, color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
     &:hover {
       background-color: ${props => props.theme.itemBg};
     }
