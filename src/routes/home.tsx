@@ -33,11 +33,14 @@ const Home: React.FC = () => {
         </LongText>
         <Flex variants={containerVariants}>
           <ImgWrapper>
-            <motion.img
-              variants={imageVariants}
-              src="./hotaroo.jpg"
-              alt="hotaroo face"
-            />
+            <picture>
+              <source srcSet="./hotaroo.webp" type="image/webp" />
+              <motion.img
+                variants={imageVariants}
+                src="./hotaroo.jpg"
+                alt="hotaroo face"
+              />
+            </picture>
           </ImgWrapper>
           <Info>
             <Name>Kay Sothearo</Name>

@@ -11,7 +11,7 @@ const Cards: React.FC<IProps> = ({ offset }) => {
   return (
     <Container>
       {posts.slice(0, offset).map((post, idx) => (
-        <Card key={idx}>
+        <Card key={idx + (offset || 0)}>
           <a
             href={`https://github.com/hotaroo-dev/${post.title.replace(
               /\s/g,
