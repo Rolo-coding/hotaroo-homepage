@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Github, Instagram, Next } from '../components/svg'
 import Cards from '../components/cards'
-import Image, {
+import {
   BlockTitle,
   Container,
   Text,
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         </LongText>
         <Flex variants={containerVariants}>
           <ImgWrapper>
-            <Image
+            <motion.img
               variants={imageVariants}
               src="./hotaroo.jpg"
               alt="hotaroo face"

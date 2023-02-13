@@ -1,5 +1,4 @@
-import React from 'react'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
 const Container = styled(motion.main)`
@@ -109,15 +108,3 @@ export {
   spring,
   delay
 }
-
-interface IImage {
-  src: string
-  alt?: string
-  variants?: Variants
-}
-
-const Image = React.memo(({ src, alt, variants }: IImage) => {
-  return <motion.img src={src} alt={alt} variants={variants} />
-})
-
-export default Image

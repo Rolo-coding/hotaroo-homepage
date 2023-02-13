@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
-import Image, { BlockTitle, opacity, tween, spring } from '../style'
+import { BlockTitle, opacity, tween, spring } from '../style'
 
 const offset = 6
 
@@ -20,14 +20,14 @@ const Langs: React.FC = () => {
         <Grid variants={firstCol} transition={spring}>
           {langs.slice(0, offset).map((_, i) => (
             <Logo key={i} whileHover={{ scale: 1.2 }}>
-              <Image src={`./langs/lang${i + 1}.png`} />
+              <img src={`./langs/lang${i + 1}.png`} />
             </Logo>
           ))}
         </Grid>
         <Grid variants={lastCol} transition={spring}>
           {langs.slice(offset, 12).map((_, i) => (
             <Logo key={i + offset} whileHover={{ scale: 1.2 }}>
-              <Image src={`./langs/lang${i + 1 + offset}.png`} />
+              <img src={`./langs/lang${i + 1 + offset}.png`} />
             </Logo>
           ))}
         </Grid>

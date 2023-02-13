@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { posts } from '../data'
-import Image, { Text } from '../style'
+import { Text } from '../style'
 
 interface IProps {
   offset?: number
@@ -20,7 +20,10 @@ const Cards: React.FC<IProps> = ({ offset }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src={`./posts/post${idx}.jpg`} alt={post.title} />
+            <picture>
+              <source srcSet={`./posts/post${idx}.webp`} type="image/webp" />
+              <img src={`./posts/post${idx}.jpg`} alt={post.title} />
+            </picture>
             <Overview>{post.description}</Overview>
           </a>
         </Card>
