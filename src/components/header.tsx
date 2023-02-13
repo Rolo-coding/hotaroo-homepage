@@ -65,16 +65,16 @@ const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
         </nav>
 
         <BtnWrapper onClick={toggleTheme}>
-          <Button isDark={!isDark}>
+          <Button aria-label="Sun Icon" isDark={!isDark}>
             <Sun />
           </Button>
-          <Button isDark={isDark}>
+          <Button aria-label="Moon Icon" isDark={isDark}>
             <Moon />
           </Button>
         </BtnWrapper>
 
         <Dropdown>
-          <button onClick={toggleDropdown}>
+          <button aria-label="Hamburger Icon" onClick={toggleDropdown}>
             <Hamburger />
           </button>
 

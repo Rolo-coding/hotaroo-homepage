@@ -140,15 +140,15 @@ const Flex = styled(motion.div)`
 
 const ImgWrapper = styled(motion.div)`
   order: 1;
-  width: 100px;
-  height: 100px;
+  width: calc(100px + 0.5rem);
+  height: calc(100px + 0.5rem);
   position: relative;
   overflow: hidden;
   border-radius: 50%;
   transform: translateZ(0);
   img {
-    inset: 0;
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
