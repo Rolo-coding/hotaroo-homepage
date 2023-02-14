@@ -11,7 +11,7 @@ const Cards: React.FC<IProps> = ({ offset }) => {
   return (
     <Container>
       {posts.slice(0, offset).map((post, idx) => (
-        <Card key={idx + (offset || 0)}>
+        <Card key={idx}>
           <a
             href={`https://github.com/hotaroo-dev/${post.title.replace(
               /\s/g,
@@ -21,6 +21,10 @@ const Cards: React.FC<IProps> = ({ offset }) => {
             rel="noopener noreferrer"
           >
             <picture>
+              <source
+                media="(max-width: 40rem)"
+                srcSet={`./posts/post${idx}-min.jpg`}
+              />
               <source srcSet={`./posts/post${idx}.webp`} type="image/webp" />
               <img src={`./posts/post${idx}.jpg`} alt={post.title} />
             </picture>
@@ -61,4 +65,4 @@ const Overview = styled(Text)`
   opacity: 0.8;
 `
 
-export default Cards
+export default React.memo(Cards)
