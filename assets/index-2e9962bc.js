@@ -446,6 +446,7 @@ Error generating stack: `+o.message+`
 `,Nh=Y(ke.div)`
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
 `,AP=Y(ke.div)`
   order: 1;
   width: calc(100px + 0.5rem);
