@@ -140,6 +140,7 @@ const Wrapper = styled(motion.div)`
 const Flex = styled(motion.div)`
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
 `
 
 const ImgWrapper = styled(motion.div)`
