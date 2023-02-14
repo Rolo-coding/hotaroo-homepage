@@ -34,6 +34,7 @@ const Home: React.FC = () => {
         <Flex variants={containerVariants}>
           <ImgWrapper>
             <picture>
+              <source media="(max-width: 40rem)" srcSet="./hotaroo-min.jpg" />
               <source srcSet="./hotaroo.webp" type="image/webp" />
               <motion.img
                 variants={imageVariants}
