@@ -31,7 +31,7 @@ const Home: React.FC = () => {
         <LongText variants={containerVariants}>
           Hello, I'm a student majoring in computer science based in Cambodia!
         </LongText>
-        <Flex variants={containerVariants}>
+        <Box variants={containerVariants}>
           <ImgWrapper>
             <picture>
               <source media="(max-width: 40rem)" srcSet="./hotaroo-min.jpg" />
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
             <Name>Kay Sothearo</Name>
             <Text>Web Developer ( Frontend / Backend )</Text>
           </Info>
-        </Flex>
+        </Box>
 
         <Wrapper variants={containerVariants}>
           <BlockTitle>Work</BlockTitle>
@@ -140,7 +140,19 @@ const Wrapper = styled(motion.div)`
 const Flex = styled(motion.div)`
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+`
+
+const Box = styled(Flex)`
+  flex-direction: column;
+  & > div:first-child {
+    margin-top: 1.25rem;
+  }
+  @media screen and (min-width: 40rem) {
+    flex-direction: row;
+    & > div:first-child {
+      margin-top: 0;
+    }
+  }
 `
 
 const ImgWrapper = styled(motion.div)`
@@ -151,6 +163,7 @@ const ImgWrapper = styled(motion.div)`
   overflow: hidden;
   border-radius: 50%;
   transform: translateZ(0);
+  align-self: center;
   img {
     position: absolute;
     inset: 0;
