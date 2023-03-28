@@ -9,7 +9,7 @@ interface Props {
   toggleTheme: () => void
 }
 
-const Navbar: React.FC<Props> = ({ isDark, toggleTheme }) => {
+const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const { pathname } = useLocation()
   const { scrollY } = useScroll()
@@ -302,4 +302,4 @@ const menuVariants = {
   }
 }
 
-export default Navbar
+export default Header
