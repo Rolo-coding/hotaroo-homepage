@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 const Container = styled(motion.main)`
   width: 100%;
-  max-width: 48rem;
+  max-width: 118ch;
   margin-top: 2rem;
   margin-inline: auto;
   padding-inline: 1.5rem;
