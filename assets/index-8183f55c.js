@@ -386,9 +386,9 @@ Error generating stack: `+o.message+`
       background-color: ${e=>e.theme.itemBg};
     }
   }
-`,$h=G.a.attrs({target:"_blank",rel:"noopener noreferrer"})``,hP={normal:{transform:"rotate(-30deg)"},active:{transform:"rotate(0deg)",transition:{type:"tween",duration:.2}}},mP={expanded:{opacity:1,scale:1,display:"block"},collapsed:{opacity:0,scale:.9,transitionEnd:{display:"none"}}},gP=[{title:"Netflix Clone",description:"Netflix clone with vanilla JS"},{title:"Tolv Clone",description:"Tolv clone with React and tailwindcss"},{title:"Checkout Cart",description:"( Add / Delete ) Cart"},{title:"Calendar",description:"Calendar with tailwindcss"},{title:"Php Contacts",description:"PHP Crud Opeations and Searching"},{title:"Crypto Tracker",description:"track cryptocurrency with coinpaprika api"}],Ff=G(ke.main)`
+`,$h=G.a.attrs({target:"_blank",rel:"noopener noreferrer"})``,hP={normal:{transform:"rotate(-30deg)"},active:{transform:"rotate(0deg)",transition:{type:"tween",duration:.2}}},mP={expanded:{opacity:1,scale:1,display:"block"},collapsed:{opacity:0,scale:.9,transitionEnd:{display:"none"}}},gP=[{title:"Netflix Clone",description:"Netflix clone with vanilla JS"},{title:"Tolv Clone",description:"Tolv clone with React and tailwindcss"},{title:"Checkout Cart",description:"( Add / Delete ) Cart"},{title:"Markdown Editor",description:"Create Markdown Editor with Codemirror"},{title:"Calendar",description:"Calendar with tailwindcss"},{title:"Php Contacts",description:"PHP Crud Opeations and Searching"},{title:"Crypto Tracker",description:"track cryptocurrency with coinpaprika api"}],Ff=G(ke.main)`
   width: 100%;
-  max-width: 118ch;
+  max-width: 120ch;
   margin-top: 2rem;
   margin-inline: auto;
   padding-inline: 1.5rem;
