@@ -171,7 +171,7 @@ const ImgWrapper = styled(motion.div)`
     height: 100%;
     border-radius: 50%;
     border: 0.25rem solid #204529;
-    transition: filter 1s ease;
+    transition: filter 0.75s ease;
   }
 `
 

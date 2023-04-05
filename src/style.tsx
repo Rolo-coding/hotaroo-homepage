@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 const Container = styled(motion.main)`
   width: 100%;
-  max-width: 118ch;
+  max-width: 120ch;
   margin-top: 2rem;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -57,7 +57,7 @@ const spring = {
 }
 
 const delay = {
-  staggerChildren: 0.25,
+  staggerChildren: 0.15,
   delayChildren: 0.25
 }
 
@@ -77,7 +77,7 @@ const imageVariants = {
     opacity: 1,
     scale: 1,
     filter: 'blur(0)',
-    transition: { type: 'tween', duration: 1, delay: 0.4 }
+    transition: { type: 'tween', duration: 0.75, delay: 0.4 }
   },
   exit: { opacity: 0, transition: { delay: 0 } }
 }
