@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import styled, { css } from 'styled-components'
 import { Catpaw, Github, Sun, Moon, Hamburger } from './svg'
+import useToggleState from '../useToggleState'
 
 interface Props {
   isDark: boolean
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
-  const [openDropdown, setOpenDropdown] = useState(false)
+  const [openDropdown, toggleDropdown] = useToggleState(false)
   const { pathname } = useLocation()
   const { scrollY } = useScroll()
   const bg = isDark ? '11 11 11' : '255 255 255'
@@ -20,14 +21,10 @@ const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
     [`rgb(${bg} / 0)`, `rgb(${bg} / 0.67)`]
   )
 
-  const toggleDropdown = () => {
-    setOpenDropdown(prev => !prev)
-  }
-
   useEffect(() => {
     if (!openDropdown) return
-    scrollY.onChange(y => {
-      y > 10 && setOpenDropdown(false)
+    return scrollY.on('change', current => {
+      current > 10 && toggleDropdown()
     })
   }, [openDropdown, scrollY])
 

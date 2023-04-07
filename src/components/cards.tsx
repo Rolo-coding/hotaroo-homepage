@@ -65,4 +65,4 @@ const Overview = styled(Text)`
   opacity: 0.8;
 `
 
-export default React.memo(Cards)
+export default Cards
