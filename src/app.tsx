@@ -7,8 +7,9 @@ import Header from './components/header'
 import Router from './router'
 import useToggleState from './useToggleState'
 
-const getTheme = () =>
-  localStorage.getItem('theme') === 'false' ? false : true
+const getTheme = () => localStorage.getItem('theme') === 'true'
+
+console.log(getTheme())
 
 const App: React.FC = () => {
   const [isDark, toggleTheme] = useToggleState(getTheme())

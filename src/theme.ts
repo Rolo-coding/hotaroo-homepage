@@ -2,6 +2,7 @@ import type { DefaultTheme } from 'styled-components'
 
 export const darkTheme: DefaultTheme = {
   bgColor: '#202023',
+  cardColor: '#27272a',
   borderColor: '#fff2',
   breakLine: '#fff3',
   textBg: '#3f3f46',
@@ -24,6 +25,7 @@ export const darkTheme: DefaultTheme = {
 
 export const lightTheme: DefaultTheme = {
   bgColor: '#f8f4ed',
+  cardColor: '#fff6',
   borderColor: '#0004',
   breakLine: 'rgb(180 200 200)',
   textBg: '#fffa',

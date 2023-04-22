@@ -55,8 +55,13 @@ const Card = styled.li`
   img {
     width: 100%;
     aspect-ratio: 16 / 9;
+    background-color: ${props => props.theme.cardColor};
     border-radius: 0.5rem;
     box-shadow: #0003 0px 1px 2px 0px, #0002 0px 1px 3px 1px;
+
+    @media screen and (min-width: 40rem) {
+      min-height: 175px;
+    }
   }
 `
 

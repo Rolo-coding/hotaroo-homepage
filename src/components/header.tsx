@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
 import styled, { css } from 'styled-components'
 import { Catpaw, Github, Sun, Moon, Hamburger } from './svg'
 import useToggleState from '../useToggleState'
+
+const isMobile = !!navigator.userAgent.match(/iphone|ipad|android|blackberry/gi)
 
 interface Props {
   isDark: boolean
@@ -20,6 +22,12 @@ const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
     [0, 60],
     [`rgb(${bg} / 0)`, `rgb(${bg} / 0.67)`]
   )
+  const targetRef = useRef(null)
+  const { scrollBoundedProgress } = useBoundedScroll(40, {
+    target: targetRef
+  })
+  const opacity = useTransform(scrollBoundedProgress, [0, 1], [1, 0])
+  const padding = useTransform(scrollBoundedProgress, [0, 1], [14, 8])
 
   useEffect(() => {
     if (!openDropdown) return
@@ -30,7 +38,14 @@ const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
 
   return (
     <Container style={{ backgroundColor }}>
-      <Wrapper>
+      <Wrapper
+        ref={targetRef}
+        style={
+          !isMobile
+            ? { paddingTop: padding, paddingBottom: padding }
+            : undefined
+        }
+      >
         <Logo variants={{}} initial="normal" whileHover="active">
           <Link to="/">
             <Catpaw variants={logoVariants} />
@@ -38,7 +53,7 @@ const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
           </Link>
         </Logo>
 
-        <nav>
+        <motion.nav style={!isMobile ? { opacity } : undefined}>
           <Tabs>
             <Tab>
               <Link to="/works">
@@ -59,7 +74,7 @@ const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
               </Anchor>
             </Tab>
           </Tabs>
-        </nav>
+        </motion.nav>
 
         <BtnWrapper onClick={toggleTheme}>
           <Button aria-label="Sun Icon" isDark={!isDark}>
@@ -111,6 +126,30 @@ const Header: React.FC<Props> = ({ isDark, toggleTheme }) => {
   )
 }
 
+const clamp = (number: number, min: number, max: number): number =>
+  Math.min(Math.max(number, min), max)
+
+const useBoundedScroll = (
+  bounds: number,
+  scrollOptions: { target: React.MutableRefObject<null> }
+) => {
+  const { scrollY } = useScroll(scrollOptions)
+  const scrollBounded = useMotionValue(0)
+  const scrollBoundedProgress = useTransform(scrollBounded, [0, bounds], [0, 1])
+
+  useEffect(() => {
+    return scrollY.on('change', current => {
+      const previous = scrollY.getPrevious()
+      const diff = current - previous
+      const newScrollBounded = scrollBounded.get() + diff
+
+      scrollBounded.set(clamp(newScrollBounded, 0, bounds))
+    })
+  }, [scrollY, bounds, scrollBounded])
+
+  return { scrollBoundedProgress }
+}
+
 const Container = styled(motion.header)`
   z-index: 2;
   width: 100%;
@@ -124,7 +163,7 @@ const flex = css`
   align-items: center;
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   width: 100%;
   max-width: 64rem;
   margin-inline: auto;
@@ -190,7 +229,7 @@ const Underline = styled(motion.div)`
   background-color: #38b2ac;
 `
 
-const BtnWrapper = styled.div`
+const BtnWrapper = styled(motion.div)`
   padding: 1px;
   margin-left: auto;
   background-color: ${props => props.theme.btnWrapperBg};
