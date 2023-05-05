@@ -489,7 +489,7 @@ Error generating stack: `+i.message+`
   transition: background-color 0.25s ease-in-out;
 `,DP=G.div`
   flex: 1;
-`,VP=G.h3`
+`,VP=G.h1`
   font-size: 2.2rem;
   line-height: 1.5;
   font-weight: 700;
@@ -575,4 +575,4 @@ Error generating stack: `+i.message+`
     border-radius: 10rem;
     cursor: pointer;
   }
-`,bP={hidden:{x:-10,opacity:0,transition:Kn},visible:{x:0,opacity:1}},BP={hidden:{x:10,opacity:0,transition:Kn},visible:{x:0,opacity:1}},UP=()=>H(bf,{variants:{},initial:"hidden",animate:"visible",exit:"hidden",children:[T(Lr,{children:T("title",{children:"Hotaroo - Works"})}),T(jP,{}),T(CP,{variants:EP,transition:Kn}),H(fe.div,{variants:jt,transition:ti,children:[T(Bf,{children:"Works"}),T(Uf,{})]})]}),HP=()=>{const e=qn();return T(wE,{mode:"wait",children:H(ES,{location:e,children:[T(Zi,{path:"/",element:T(LP,{})}),T(Zi,{path:"/works",element:T(UP,{})}),T(Zi,{path:"/posts",element:T(zP,{})})]},e.pathname)})},WP=()=>localStorage.getItem("theme")!=="false",GP=()=>{const[e,t]=Gy(WP());return S.useEffect(()=>{localStorage.setItem("theme",String(e))},[e]),T(Zx,{theme:e?e2:t2,children:H(yr,{children:[T(n2,{}),T(aP,{isDark:e,toggleTheme:t}),T(HP,{})]})})},YP=()=>{const{pathname:e}=qn();return S.useLayoutEffect(()=>{"scrollRestoration"in window.history&&(window.history.scrollRestoration="manual"),window.scrollTo(0,0)},[e]),null};$a.createRoot(document.getElementById("root")).render(T(Re.StrictMode,{children:H(OS,{children:[T(YP,{}),T(GP,{})]})}));
+`,bP={hidden:{x:-10,opacity:0,transition:Kn},visible:{x:0,opacity:1}},BP={hidden:{x:10,opacity:0,transition:Kn},visible:{x:0,opacity:1}},UP=()=>H(bf,{variants:{},initial:"hidden",animate:"visible",exit:"hidden",children:[T(Lr,{children:T("title",{children:"Hotaroo - Works"})}),T(jP,{}),T(CP,{variants:EP,transition:Kn}),H(fe.div,{variants:jt,transition:ti,children:[T(Bf,{children:"Works"}),T(Uf,{})]})]}),HP=()=>{const e=qn();return T(wE,{mode:"wait",children:H(ES,{location:e,children:[T(Zi,{path:"/",element:T(LP,{})}),T(Zi,{path:"/works",element:T(UP,{})}),T(Zi,{path:"/posts",element:T(zP,{})})]},e.pathname)})},WP=()=>localStorage.getItem("theme")==="true",GP=()=>{const[e,t]=Gy(WP());return S.useEffect(()=>{localStorage.setItem("theme",String(e))},[e]),T(Zx,{theme:e?e2:t2,children:H(yr,{children:[T(n2,{}),T(aP,{isDark:e,toggleTheme:t}),T(HP,{})]})})},YP=()=>{const{pathname:e}=qn();return S.useLayoutEffect(()=>{"scrollRestoration"in window.history&&(window.history.scrollRestoration="manual"),window.scrollTo(0,0)},[e]),null};$a.createRoot(document.getElementById("root")).render(T(Re.StrictMode,{children:H(OS,{children:[T(YP,{}),T(GP,{})]})}));
