@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Github, Instagram, Next } from '../components/svg'
 import Cards from '../components/cards'
+import { works } from '../data'
 import {
   BlockTitle,
   Container,
@@ -126,7 +127,7 @@ const Home: React.FC = () => {
               </AnchorTargetBlank>
             </Item>
           </Items>
-          <Cards offset={2} />
+          <Cards name="works" data={works} offset={2} />
         </motion.div>
       </motion.div>
     </Container>
@@ -171,7 +172,7 @@ const ImgWrapper = styled(motion.div)`
     height: 100%;
     border-radius: 50%;
     border: 0.25rem solid #204529;
-    transition: filter 0.75s ease;
+    transition: filter 0.65s ease;
   }
 `
 
@@ -188,7 +189,7 @@ const Info = styled.div`
   flex: 1;
 `
 
-const Name = styled.h3`
+const Name = styled.h1`
   font-size: 2.2rem;
   line-height: 1.5;
   font-weight: 700;

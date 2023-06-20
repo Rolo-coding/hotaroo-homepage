@@ -1,7 +1,9 @@
 import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { BlockTitle, opacity, tween, spring } from '../style'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const offset = 6
 
@@ -20,14 +22,17 @@ const Langs: React.FC = () => {
         <Grid variants={firstCol} transition={spring}>
           {langs.slice(0, offset).map((_, i) => (
             <Logo key={i} whileHover={{ scale: 1.2 }}>
-              <img src={`./langs/lang${i + 1}.png`} />
+              <LazyLoadImage src={`./langs/lang${i + 1}.png`} effect="blur" />
             </Logo>
           ))}
         </Grid>
         <Grid variants={lastCol} transition={spring}>
           {langs.slice(offset, 12).map((_, i) => (
             <Logo key={i + offset} whileHover={{ scale: 1.2 }}>
-              <img src={`./langs/lang${i + 1 + offset}.png`} />
+              <LazyLoadImage
+                src={`./langs/lang${i + 1 + offset}.png`}
+                effect="blur"
+              />
             </Logo>
           ))}
         </Grid>

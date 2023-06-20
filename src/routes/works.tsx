@@ -12,6 +12,7 @@ import {
   tween,
   spring
 } from '../style'
+import { works } from '../data'
 
 const Works: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const Works: React.FC = () => {
       <Breakline variants={underlineOpacity} transition={tween} />
       <motion.div variants={containerVariants} transition={spring}>
         <Title>Works</Title>
-        <Cards />
+        <Cards name="works" data={works} />
       </motion.div>
     </Container>
   )

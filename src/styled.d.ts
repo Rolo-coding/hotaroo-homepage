@@ -4,6 +4,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     bgColor: string
     cardColor: string
+    skeleton: string
     borderColor: string
     breakLine: string
     textBg: string

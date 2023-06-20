@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Title, containerVariants, spring } from '../style'
 import Cards from '../components/cards'
+import { posts } from '../data'
 
 const Posts: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const Posts: React.FC = () => {
         <title>Hotaroo - Posts</title>
       </Helmet>
       <Title>Posts</Title>
-      <Cards />
+      <Cards name="posts" data={posts} />
     </Container>
   )
 }
