@@ -66,11 +66,16 @@ const Cards: React.FC<IProps> = ({ name, data, offset }) => {
                   autoPlay
                   muted
                   loop
+                  playsInline
                   onLoadedData={() => setLoading(false)}
                 >
                   <source
                     src={`./${name}/${filename}${idx}.mp4`}
                     type="video/mp4"
+                  />
+                  <source
+                    src={`./${name}/${filename}${idx}.webm`}
+                    type="video/webm"
                   />
                 </Image>
               )}
