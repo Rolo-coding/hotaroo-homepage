@@ -67,7 +67,7 @@ const Cards: React.FC<IProps> = ({ name, data, offset }) => {
                   muted
                   loop
                   playsInline
-                  onLoadedData={() => setLoading(false)}
+                  onCanPlayThrough={() => setLoading(false)}
                 >
                   <source
                     src={`./${name}/${filename}${idx}.mp4`}
