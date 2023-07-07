@@ -187,6 +187,7 @@ Error generating stack: `+i.message+`
 
   html {
     box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
     background-color: ${e=>e.theme.bgColor};
   }
   *,
