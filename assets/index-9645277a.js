@@ -420,7 +420,7 @@ Error generating stack: `+i.message+`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-`,wr={type:"tween",duration:.4},yo={type:"spring",stiffness:100,damping:20},RE={staggerChildren:.15,delayChildren:.25},sn={hidden:{y:30,opacity:0,transition:wr},visible:{y:0,opacity:1,transition:yo},exit:{y:30,opacity:0,transition:wr}},LE={hidden:{opacity:0,scale:1.5,filter:"blur(40px)"},visible:{opacity:1,scale:1,filter:"blur(0)",transition:{type:"tween",duration:.75,delay:.4}},exit:{opacity:0,transition:{delay:0}}},ME={hidden:{opacity:0},visible:{opacity:.5}},lv={hidden:{opacity:0},visible:{opacity:1},exit:{opacity:0,transition:{...wr,staggerChildren:0}}},jE=e=>new Promise(t=>setTimeout(t,e)),Jf=({name:e,data:t,offset:n})=>b(_E,{children:t.slice(0,n).map((r,o)=>b(DE,{idx:o,name:e,basename:e.slice(0,-1),data:r},o))}),DE=({idx:e,name:t,basename:n,data:r})=>{const[o,{height:i}]=CE(),[s,a]=S.useState(!0);return ie("li",{children:[s&&ie(IE,{style:{position:`${i?"absolute":"relative"}`},children:[b(cv,{}),b(em,{})]}),b(Ee.div,{variants:VE,initial:!1,animate:s?"hidden":"visible",transition:yo,children:ie(uv,{as:"a",href:t==="works"?`https://github.com/hotaroo-dev/${r.title.replace(/\s/g,"-")}`:`https://www.tiktok.com/@hotarooooooo/video/${r.title}`,target:"_blank",rel:"noopener noreferrer",children:[t==="works"?ie("picture",{children:[b("source",{media:"(max-width: 40rem)",srcSet:`./${t}/${n}${e}-min.jpg`}),b("source",{srcSet:`./${t}/${n}${e}.webp`,type:"image/webp"}),b(Jh,{as:"img",loading:"lazy",src:`./${t}/${n}${e}.jpg`,alt:r.title,ref:o,onLoad:async()=>{await jE(600),a(!1)}})]}):ie(Jh,{ref:o,as:"video",autoPlay:!0,muted:!0,loop:!0,playsInline:!0,onCanPlayThrough:()=>{a(!1)},children:[b("source",{src:`./${t}/${n}${e}.mp4`,type:"video/mp4"}),b("source",{src:`./${t}/${n}${e}.webm`,type:"video/webm"})]}),b(em,{children:r.description})]})})]})},_E=ue.ul`
+`,wr={type:"tween",duration:.4},yo={type:"spring",stiffness:100,damping:20},RE={staggerChildren:.15,delayChildren:.25},sn={hidden:{y:30,opacity:0,transition:wr},visible:{y:0,opacity:1,transition:yo},exit:{y:30,opacity:0,transition:wr}},LE={hidden:{opacity:0,scale:1.5,filter:"blur(40px)"},visible:{opacity:1,scale:1,filter:"blur(0)",transition:{type:"tween",duration:.65,delay:.4}},exit:{opacity:0,transition:{delay:0}}},ME={hidden:{opacity:0},visible:{opacity:.5}},lv={hidden:{opacity:0},visible:{opacity:1},exit:{opacity:0,transition:{...wr,staggerChildren:0}}},jE=e=>new Promise(t=>setTimeout(t,e)),Jf=({name:e,data:t,offset:n})=>b(_E,{children:t.slice(0,n).map((r,o)=>b(DE,{idx:o,name:e,basename:e.slice(0,-1),data:r},o))}),DE=({idx:e,name:t,basename:n,data:r})=>{const[o,{height:i}]=CE(),[s,a]=S.useState(!0);return ie("li",{children:[s&&ie(IE,{style:{position:`${i?"absolute":"relative"}`},children:[b(cv,{}),b(em,{})]}),b(Ee.div,{variants:VE,initial:!1,animate:s?"hidden":"visible",transition:yo,children:ie(uv,{as:"a",href:t==="works"?`https://github.com/hotaroo-dev/${r.title.replace(/\s/g,"-")}`:`https://www.tiktok.com/@hotarooooooo/video/${r.title}`,target:"_blank",rel:"noopener noreferrer",children:[t==="works"?ie("picture",{children:[b("source",{media:"(max-width: 40rem)",srcSet:`./${t}/${n}${e}-min.jpg`}),b("source",{srcSet:`./${t}/${n}${e}.webp`,type:"image/webp"}),b(Jh,{as:"img",loading:"lazy",src:`./${t}/${n}${e}.jpg`,alt:r.title,ref:o,onLoad:async()=>{await jE(600),a(!1)}})]}):ie(Jh,{ref:o,as:"video",autoPlay:!0,muted:!0,loop:!0,playsInline:!0,onCanPlayThrough:()=>{a(!1)},children:[b("source",{src:`./${t}/${n}${e}.mp4`,type:"video/mp4"}),b("source",{src:`./${t}/${n}${e}.webm`,type:"video/webm"})]}),b(em,{children:r.description})]})})]})},_E=ue.ul`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.75rem;
@@ -511,7 +511,6 @@ Error generating stack: `+i.message+`
     height: 100%;
     border-radius: 50%;
     border: 0.25rem solid #204529;
-    transition: filter 0.65s ease;
   }
 `,BE=ue(ln)`
   text-align: center;
@@ -565,11 +564,18 @@ Error generating stack: `+i.message+`
   border: none;
   border-radius: 5px;
   background-color: ${e=>e.theme.button.bg};
+  background-image: linear-gradient(
+    ${e=>e.theme.button.hover},
+    ${e=>e.theme.button.hover}
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0%;
+  background-position: bottom;
   color: ${e=>e.theme.button.color};
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
-  transition: background-color 0.25s ease-in-out;
+  transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    background-color: ${e=>e.theme.button.hover};
+    background-size: 100% 100%;
   }
 
   span {
@@ -581,7 +587,9 @@ Error generating stack: `+i.message+`
   a > button {
     box-shadow: none;
     color: ${e=>e.theme.button.bg};
+    background-image: none;
     background-color: transparent;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
       background-color: ${e=>e.theme.button.link.normal};
     }
